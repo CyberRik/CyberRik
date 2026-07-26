@@ -248,106 +248,24 @@ Agentic request routing — dispatching to the appropriate model or tool rather 
 
 ## Experience
 
-<details open>
-<summary><b>Otsuka Corporation</b> — SDE Intern · Tokyo, Japan · <i>May – Jul 2026</i> &nbsp;·&nbsp; <b>only student selected from IIT Madras</b></summary>
+**Otsuka Corporation** · SDE Intern · Tokyo, Japan · *May – Jul 2026*
+<br/><sub>Only student selected from IIT Madras for the programme.</sub>
+Trained the model and architected the platform it runs inside — 50K+ synthetic examples, QLoRA fine-tuning of
+Qwen3-8B to **97% BFCL**, and Senpai's capability-graph execution layer at **5× throughput** (11 → 55 tok/s).
 
-<br/>
+**Gravton Labs** · AI Engineer Intern · Ontario, Canada (Remote) · *Feb – May 2026*
+Owned the crawl and attribution layer under a GEO visibility platform — typed crawl budgets that decide page
+quality before spend, and scoped citation attribution that can honestly return nothing. Migrated the backend
+from Encore TypeScript to **FastAPI** on Railway + Supabase, mid-flight.
 
-The **only person selected from my college** for the programme, and the work ran on both sides of the same
-problem at once: training a model to call functions reliably, and architecting the platform it executes
-inside. Two workstreams, one system.
+**OctonData** · Software Engineer Intern · San Francisco (Remote) · *Oct – Dec 2025*
+Primary engineer on a document-intelligence platform running **10K+ pages/month** — hybrid OCR, layout
+detection and LLM fallback routing, with **20–30%** better long-document RAG. **10+ CPA firms** onboarded,
+manual review time cut **40%+**.
 
-**Training — [ToolCallLM](https://github.com/CyberRik/tool-calling-bfcl)**
-
-- Synthetic-data pipelines producing **50K+ function-calling examples** from tool schemas, blending
-  single-turn (xLAM) and multi-turn (ToolACE) sources with **diversity sampling** — scoring candidates
-  against a coverage report rather than sampling randomly, which just oversamples the domains the datasets
-  already agree on
-- **QLoRA fine-tuning of Qwen3-8B** on an NVIDIA DGX Spark — 4-bit quantised base plus low-rank adapters is
-  what makes an 8B run fit on a single node at all. Converged in a single epoch
-- **97% BFCL accuracy** on single-turn function calling, scored through an automated eval harness that
-  classifies failures into a taxonomy rather than counting them
-- Found and fixed a loss-masking bug where full-sequence causal loss meant the model was optimising
-  conversation mimicry, compounded by a pad token aliasing EOS — which suppressed loss on precisely the turn
-  terminators under investigation. Every prior checkpoint had been optimising a different objective, so those
-  comparisons were discarded rather than reinterpreted
-
-**Platform — [Senpai](https://github.com/CyberRik/senpai)**
-
-- Architected an enterprise AI execution platform: a planner decomposes a request into a **capability
-  graph**, an adaptive scheduler resolves it into a dependency-aware **DAG** and executes ready nodes in
-  parallel, with **GraphRAG** over enterprise knowledge and CRM data as the evidence layer
-- **5× inference throughput — 11 → 55 tok/s** — via prefix caching, persistent context caching and parallel
-  execution. Throughput turned out to be an architecture property, not a hardware one
-- Profiling showed generation was **98% of wall time**, and that long turns were **paying for their answer
-  twice** — the tool-selection round generated a full answer just to signal it was done, which synthesis then
-  discarded and regenerated. Two fixes failed before the right one worked by making the behaviour
-  unrepresentable rather than policing it
-- Built a **numeric grounding gate**: statistics computed deterministically over a graph of reps, deals,
-  customers and products, with every number in the generated text checked against a whitelist of the report's
-  real figures. Unlisted number, text discarded
-- Chose model routing with measurements, not intuition — bf16 8B gave only 1.11× (bandwidth-bound), while Q4
-  was the real lever at 2.72× wall and grounding parity, cutting the slowest workflow from 334s to 152s
-- Engineered agent runtimes with deterministic-first orchestration, intelligent tool routing, streaming
-  execution, hybrid retrieval and modular capability composition
-
-*Engineering detail for both workstreams is in the [Senpai](#senpai--enterprise-ai-execution-platform) and
-[tool-calling-bfcl](#tool-calling-bfcl--function-calling-model-training) dropdowns above.*
-
-</details>
-
-<details>
-<summary><b>Gravton Labs</b> — AI Engineer Intern · Ontario, Canada (Remote) · <i>Feb – May 2026</i></summary>
-
-<br/>
-
-Owned the crawl and attribution layer under a GEO visibility platform. Both halves are selection problems
-disguised as data problems:
-
-- A crawler with a page budget spends it on whatever URL order it received, drowning in blog posts while
-  missing the pricing and comparison pages that actually drive AI answers. **Typed per-page-type budgets**
-  with ranked selection and a per-prefix diversity cap decide quality *before* spend.
-- Attribution against a global brand list matches everything, which is worse than matching nothing. Scoping
-  to a layered candidate map means the system **can honestly return nothing** — which is what makes its
-  matches worth anything.
-- Migrated the backend from Encore TypeScript to FastAPI microservices on Railway + Supabase, mid-flight,
-  while the pipeline kept collecting.
-- Audited the Airflow migration metric-by-metric against the original and scored it **38% complete** — a far
-  more useful number to hand someone than "mostly migrated."
-
-</details>
-
-<details>
-<summary><b>OctonData</b> — Software Engineer Intern · San Francisco (Remote) · <i>Oct – Dec 2025</i></summary>
-
-<br/>
-
-Primary engineer on a document-intelligence platform running **10K+ pages/month** for U.S. tax documents,
-where the same logical form arrives as a clean PDF, a phone photo, or a scan with handwriting in the margin.
-
-- Hybrid pipeline that **routes per page** — OCR, CV layout detection, multimodal encoders, LLM fallback —
-  because every individual method has a document class it fails on
-- Long-document RAG accuracy up **20–30%** via semantic, recursive and hybrid chunking
-- 429s from the model API turned out to be a *chunking* problem, not an API one: many small chunks meant many
-  calls. Fixed by capping chunks per document and letting size grow, with local MiniLM embeddings so semantic
-  splitting costs no API calls at all
-- The dangerous merge bug is the one producing a *plausible* number — income figures across chunks should
-  sum, invoice totals must not, and a generic recursive merge double-counts silently
-- Onboarded **10+ U.S. CPA firms**, cutting manual review time **40%+**
-
-</details>
-
-<details>
-<summary><b>Tecnod8.ai</b> — Machine Learning Intern · Remote · <i>Sep – Oct 2025</i></summary>
-
-<br/>
-
-Multilingual document parsing across **5+ languages** including RTL and Devanagari (YOLOv10, PP-DocLayout-L,
-PaddleOCR), with ensemble layout inference handling rotation and adaptive scaling. Qwen3-VL for tables,
-figures and charts; Gemma embeddings into ChromaDB for retrieval. Ranked **Top 20 nationally** for solo
-pipeline contribution; Tecnod8 named to *Forbes India Select 200* during tenure.
-
-</details>
+**Tecnod8.ai** · ML Intern · Remote · *Sep – Oct 2025*
+Multilingual document parsing across **5+ languages** including RTL and Devanagari (YOLOv10, PaddleOCR,
+Qwen3-VL). Ranked **Top 20 nationally** for solo pipeline contribution.
 
 ---
 
