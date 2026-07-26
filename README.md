@@ -249,14 +249,50 @@ Agentic request routing — dispatching to the appropriate model or tool rather 
 ## Experience
 
 <details open>
-<summary><b>Otsuka Corporation</b> — SDE Intern · Tokyo, Japan · <i>May – Jul 2026</i></summary>
+<summary><b>Otsuka Corporation</b> — SDE Intern · Tokyo, Japan · <i>May – Jul 2026</i> &nbsp;·&nbsp; <b>only student selected from IIT Madras</b></summary>
 
 <br/>
 
-Synthetic-data pipelines producing 50K+ function-calling examples; QLoRA fine-tuning and automated evals for
-Qwen3-8B on NVIDIA DGX Spark; architected **Senpai** — planner-driven capability graphs resolved as
-dependency-aware DAGs over GraphRAG. Took inference throughput 5× (11 → 55 tok/s) through prefix caching,
-persistent context caching and parallel execution.
+The **only person selected from my college** for the programme, and the work ran on both sides of the same
+problem at once: training a model to call functions reliably, and architecting the platform it executes
+inside. Two workstreams, one system.
+
+**Training — [ToolCallLM](https://github.com/CyberRik/tool-calling-bfcl)**
+
+- Synthetic-data pipelines producing **50K+ function-calling examples** from tool schemas, blending
+  single-turn (xLAM) and multi-turn (ToolACE) sources with **diversity sampling** — scoring candidates
+  against a coverage report rather than sampling randomly, which just oversamples the domains the datasets
+  already agree on
+- **QLoRA fine-tuning of Qwen3-8B** on an NVIDIA DGX Spark — 4-bit quantised base plus low-rank adapters is
+  what makes an 8B run fit on a single node at all. Converged in a single epoch
+- **97% BFCL accuracy** on single-turn function calling, scored through an automated eval harness that
+  classifies failures into a taxonomy rather than counting them
+- Found and fixed a loss-masking bug where full-sequence causal loss meant the model was optimising
+  conversation mimicry, compounded by a pad token aliasing EOS — which suppressed loss on precisely the turn
+  terminators under investigation. Every prior checkpoint had been optimising a different objective, so those
+  comparisons were discarded rather than reinterpreted
+
+**Platform — [Senpai](https://github.com/CyberRik/senpai)**
+
+- Architected an enterprise AI execution platform: a planner decomposes a request into a **capability
+  graph**, an adaptive scheduler resolves it into a dependency-aware **DAG** and executes ready nodes in
+  parallel, with **GraphRAG** over enterprise knowledge and CRM data as the evidence layer
+- **5× inference throughput — 11 → 55 tok/s** — via prefix caching, persistent context caching and parallel
+  execution. Throughput turned out to be an architecture property, not a hardware one
+- Profiling showed generation was **98% of wall time**, and that long turns were **paying for their answer
+  twice** — the tool-selection round generated a full answer just to signal it was done, which synthesis then
+  discarded and regenerated. Two fixes failed before the right one worked by making the behaviour
+  unrepresentable rather than policing it
+- Built a **numeric grounding gate**: statistics computed deterministically over a graph of reps, deals,
+  customers and products, with every number in the generated text checked against a whitelist of the report's
+  real figures. Unlisted number, text discarded
+- Chose model routing with measurements, not intuition — bf16 8B gave only 1.11× (bandwidth-bound), while Q4
+  was the real lever at 2.72× wall and grounding parity, cutting the slowest workflow from 334s to 152s
+- Engineered agent runtimes with deterministic-first orchestration, intelligent tool routing, streaming
+  execution, hybrid retrieval and modular capability composition
+
+*Engineering detail for both workstreams is in the [Senpai](#senpai--enterprise-ai-execution-platform) and
+[tool-calling-bfcl](#tool-calling-bfcl--function-calling-model-training) dropdowns above.*
 
 </details>
 
@@ -396,6 +432,7 @@ pipeline contribution; Tecnod8 named to *Forbes India Select 200* during tenure.
 
 ## Achievements
 
+- **Only student selected from IIT Madras** for the Otsuka Corporation internship programme, Tokyo
 - **98.61 percentile** in JEE Mains among 1.2M+ candidates · **Top 450** in WBJEE
 - **AIR 71** (Junior Squad) and City Topper — Technothlon Prelims
 - **Top 20 nationally** for solo ML pipeline contribution at Tecnod8.ai
