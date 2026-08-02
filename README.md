@@ -43,7 +43,7 @@ The through-line in most of my work is **verification** — a system that claims
 test that asserts it, a model that cites a statistic should be structurally unable to invent one, and a
 benchmark is only worth the things it holds fixed.
 
-**Currently:** SDE Intern at **Otsuka Corporation**, Tokyo · building [Ancora](https://github.com/CyberRik/Ancora) · graduating 2027.
+**Currently:** SDE Intern at **Otsuka Corporation**, Tokyo · building [Ancora](https://github.com/CyberRik/Ancora) and [TinyServe](https://github.com/CyberRik/tinyserve) · graduating 2027.
 
 > Each project below opens — the summary is the claim, the dropdown is how it was earned.
 
@@ -91,6 +91,60 @@ context doesn't travel with it — the span orphans into its own root trace. Fix
 `traceparent` as plain data and re-extracting it worker-side.
 
 📄 [RFC-0001](https://github.com/CyberRik/Ancora/blob/main/docs/RFC-0001-durable-ai-runtime.md) · [Implementation plan](https://github.com/CyberRik/Ancora/blob/main/docs/IMPLEMENTATION-PLAN.md)
+
+</details>
+
+---
+
+### [TinyServe](https://github.com/CyberRik/tinyserve) — a from-scratch LLM inference runtime on llama.cpp
+
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/llama.cpp-000000?style=flat-square" /> <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" /> <img src="https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white" /> <img src="https://img.shields.io/badge/OpenTelemetry-425CC7?style=flat-square&logo=opentelemetry&logoColor=white" />
+
+Continuous batching, block-based KV-cache accounting, admission control and pluggable fair
+scheduling (FIFO / priority / WFQ) — built from scratch in async Python on top of llama.cpp, at a
+scale small enough that every latency number traces back to a specific scheduling decision in the
+code, not a black box. Not an attempt to beat vLLM/SGLang on throughput — an attempt to build the
+same scheduling *ideas* somewhere fully explainable.
+
+**Continuous batching validated with a real POC first** · **97.2% of wall time in `llama_decode()`** (measured, not assumed) · **WFQ bounds unfairness 2.54× vs strict Priority's 3.87×**
+
+<details>
+<summary><b>Engineering notes</b></summary>
+
+<br/>
+
+**Validate the risky bet before building around it.** Real multi-sequence batched decode — one
+`llama_decode()` call advancing several independent requests together — was the whole point of the
+project and the part most likely to not work. It was proven with a standalone script (two prompts,
+one decode call, two independent continuations) before any scheduler, queue or admission layer was
+built on top of the assumption.
+
+**What a scheduling policy actually controls, once batching is continuous.** Every active sequence
+advances one decode step per tick regardless of policy — that part isn't negotiable. The one honest
+lever left is *which waiting request claims a free concurrency slot next*. FIFO, strict Priority and
+WFQ are three different, benchmarked answers to exactly that question — measured head-to-head:
+FIFO ignores priority entirely (0.45× ratio), strict Priority strongly favors the high-priority class
+(3.87×) at real cost to the other, and WFQ bounds that unfairness (2.54×) instead of eliminating the
+favoritism.
+
+**A benchmark that argued against its own hypothesis — reported anyway.** Chunked prefill was
+expected to visibly protect short requests' tail latency from a long prompt's prefill. It didn't,
+measurably, at the scale tested — because the batch builder already sorts sequences by ascending
+pending-token count each tick, so short requests are packed in *before* a long prefill regardless of
+chunk size. The mechanism was traced and written up as a negative result, not tuned until a
+difference appeared.
+
+**Self-audit found a real gap in the admission controller before it shipped.** A pre-release
+engineering audit against the original design doc found the admission controller was only checking
+KV-cache budget — missing the queue-depth backpressure check the design called for, meaning a burst
+of many small-footprint requests could grow the wait queue unboundedly. Fixed and verified live: with
+a deliberately small queue cap, exactly the expected split of requests was accepted vs. rejected with
+a distinct `queue_full` reason, not just "it compiles."
+
+**Cross-checking a profiler against your own metric, not eyeballing either alone.** A real `py-spy`
+sampling session found 97.2% of wall time inside `llama_decode()`; that fraction was then checked
+quantitatively against the server's own `decode_step_duration_seconds` histogram from the same
+window — independent agreement, not a single unverified reading.
 
 </details>
 
@@ -368,6 +422,7 @@ Qwen3-VL). Ranked **Top 20 nationally** for solo pipeline contribution.
 <sub><b>Currently active</b></sub>
 
 <a href="https://github.com/CyberRik/Ancora"><img src="https://img.shields.io/github/last-commit/CyberRik/Ancora?style=flat-square&label=Ancora&labelColor=181717&color=3FCF8E" alt="Ancora last commit" /></a>
+<a href="https://github.com/CyberRik/tinyserve"><img src="https://img.shields.io/github/last-commit/CyberRik/tinyserve?style=flat-square&label=TinyServe&labelColor=181717&color=3FCF8E" alt="TinyServe last commit" /></a>
 <a href="https://github.com/CyberRik/portfolio"><img src="https://img.shields.io/github/last-commit/CyberRik/portfolio?style=flat-square&label=portfolio&labelColor=181717&color=3FCF8E" alt="portfolio last commit" /></a>
 <a href="https://github.com/CyberRik/rerouter-agent"><img src="https://img.shields.io/github/last-commit/CyberRik/rerouter-agent?style=flat-square&label=rerouter-agent&labelColor=181717&color=555555" alt="rerouter-agent last commit" /></a>
 <a href="https://github.com/CyberRik/senpai"><img src="https://img.shields.io/github/last-commit/CyberRik/senpai?style=flat-square&label=senpai&labelColor=181717&color=555555" alt="senpai last commit" /></a>
