@@ -272,6 +272,58 @@ Selected from **200+ startups** by IITM NIRMAAN · led a 5-member cross-function
 
 ---
 
+### [reach-asr](https://github.com/CyberRik/reach-asr) — noise-robust speech recognition for telephony audio
+
+<img src="https://img.shields.io/badge/Whisper-412991?style=flat-square&logo=openai&logoColor=white" /> <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" /> <img src="https://img.shields.io/badge/LoRA%20%2F%20PEFT-FFD21E?style=flat-square&logo=huggingface&logoColor=black" /> <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" />
+
+**There is no public corpus of real emergency-call audio** — 911 recordings are legally restricted almost
+everywhere, for good privacy reasons. So this doesn't claim to have trained on them. It *constructs* the
+acoustic condition and states exactly what was constructed: a 300–3400 Hz telephone passband, G.711 μ-law
+companding, ESC-50 sirens and traffic at −5 to 10 dB SNR, and 5% packet loss over LibriSpeech speech.
+Then it LoRA fine-tunes Whisper on that channel and serves the result over HTTP to
+[reach-app](https://github.com/CyberRik/reach-app).
+
+**23.76% → 21.20% WER, 10.8% relative** · **4.37% clean-audio ceiling measured first** · **30 signal-property and contract tests**
+
+<details>
+<summary><b>Engineering notes</b></summary>
+
+<br/>
+
+**The first run failed, and the loss curve said it was working.** Training loss fell steadily from 1.82 to
+0.71 while WER more than *doubled* — 5.52% to 11.89%, worse in every SNR bucket. The cause was in the
+targets: LibriSpeech references are ALL CAPS with no punctuation, Whisper emits cased punctuated text, and
+BPE splits uppercase into far more tokens than the same words in normal case. The model spent its capacity
+learning a formatting change, then got no credit for it because the eval normalizer strips case and
+punctuation anyway. It was learning to shout, not to hear. The loss curve could not have detected that —
+it was a correct measurement of progress against the wrong objective. Only the three-way WER split caught it.
+
+**Measure the headroom before spending the GPU.** The same run had a second problem: `whisper-small` scored
+3.06% clean and 5.52% degraded on that channel — 2.5 points of headroom total. No fine-tune recovers a gap
+that isn't there. The fix is a seven-minute probe on 200 utterances before any training: if clean-vs-degraded
+is under ~10 points, harden the channel instead of training. `whisper-base` at −5 to 10 dB showed 19.2, which
+is what made the real run worth doing.
+
+**Three numbers, because any one alone misleads.** Clean zero-shot is the ceiling; degraded zero-shot is the
+baseline; degraded fine-tuned is the result. Quoting the third against the *first* would credit the fine-tune
+with the entire cost of the channel — the standard way this experiment gets oversold. Read honestly, the
+fine-tune recovered 2.56 of the 19.39 points the channel cost, about 13% of the gap. Real, and modest.
+
+**A test caught a real filter bug.** A single `lowpass_biquad` is 2nd-order — 12 dB/octave — and left ~10%
+of a 6 kHz tone standing inside a filter claiming to be a telephone passband. Understating the degradation
+would have overstated the WER gap it produces. It's three cascaded sections now (~36 dB/octave). An
+augmentation pipeline is uniquely easy to get silently wrong: a mis-scaled mix or a filter that does nothing
+still sounds plausible and trains without error, and the only symptom is a number that means something other
+than what you claim.
+
+**Failure is degraded, never lost.** If the ASR service is down, reach-app attaches the recording
+untranscribed and the dispatcher plays it. The audio is the report; the transcript is an enrichment. An
+inference outage must not be why someone's emergency recording disappears.
+
+</details>
+
+---
+
 ### [smart-fan](https://github.com/CyberRik/smart-fan) — SmartFan, brand intelligence & share-of-voice
 
 <img src="https://img.shields.io/badge/Gemini%202.5%20Flash-8E75B2?style=flat-square&logo=googlegemini&logoColor=white" /> <img src="https://img.shields.io/badge/n8n-EA4B71?style=flat-square&logo=n8n&logoColor=white" />
