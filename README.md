@@ -261,12 +261,21 @@ into meaninglessness.
 
 ### [reach-app](https://github.com/CyberRik/reach-app) — R.E.A.C.H., emergency response platform
 
-<img src="https://img.shields.io/badge/Whisper-412991?style=flat-square&logo=openai&logoColor=white" /> <img src="https://img.shields.io/badge/BART-FFD21E?style=flat-square&logo=huggingface&logoColor=black" /> <img src="https://img.shields.io/badge/WebSockets-010101?style=flat-square&logo=socketdotio&logoColor=white" /> <img src="https://img.shields.io/badge/Co--founder%20%26%20AI%20Lead-5A5A5A?style=flat-square" />
+<img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white" /> <img src="https://img.shields.io/badge/Socket.IO-010101?style=flat-square&logo=socketdotio&logoColor=white" /> <img src="https://img.shields.io/badge/OSRM-7EBC6F?style=flat-square&logo=openstreetmap&logoColor=white" /> <img src="https://img.shields.io/badge/Co--founder%20%26%20AI%20Lead-5A5A5A?style=flat-square" />
 
-Emergency calls are the worst possible input for speech models — noise, panic, cross-talk — and the output
-has to be trustworthy enough to dispatch against. Fine-tuned Whisper for real-time transcription, BART
-summarisation for the dispatcher, spoof detection at **78% precision**, and SOS dispatch with responder
-tracking over WebSockets under constraints where a slow update is a *failed* feature, not a degraded one.
+**Dispatch is the hard part, not the model.** A report arrives from a phone that may be wrong about where it
+is, and a responder has to be routed to it while both are still moving. R.E.A.C.H. runs that loop: SOS intake,
+live responder tracking over WebSockets, and OSRM routing with the encoded polylines decoded and positions
+interpolated between updates — a stale marker on a dispatch map is a *failed* feature, not a degraded one.
+
+Fake reports are screened on EXIF GPS, Haversine against the claimed location within a 3 km tolerance. The
+check deliberately **fails open** on stripped metadata: most phones strip EXIF by default, and refusing a
+genuine emergency is far worse than admitting a bad report a human will read anyway.
+
+Voice reports capture in the browser through `MediaRecorder` and post to
+[reach-asr](https://github.com/CyberRik/reach-asr); if inference is down the recording still saves and plays
+back rather than being thrown away. The speech model itself lives in that repo — along with an honest
+account of what it was and was not trained on.
 
 Selected from **200+ startups** by IITM NIRMAAN · led a 5-member cross-functional team to MVP
 
