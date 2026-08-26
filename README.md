@@ -62,6 +62,8 @@ It isn't an agent framework; it's the runtime that belongs underneath one.
 
 **~60s → ~6s kill detection** · **284 tests green** · `mypy --strict` clean · chaos experiments that assert
 
+**▶ [Watch the 2:38 demo](https://youtu.be/UVKmMZnP50A)** — the running system end to end, nothing mocked. It closes by SIGKILLing a live worker mid-run and machine-checking that the run recovered correctly: [jump straight to that at 2:01](https://youtu.be/UVKmMZnP50A?t=121).
+
 <details>
 <summary><b>Engineering notes</b></summary>
 
