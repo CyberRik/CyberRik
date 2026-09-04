@@ -467,7 +467,7 @@ Qwen3-VL). Ranked **Top 20 nationally** for solo pipeline contribution.
 - **Only student selected from IIT Madras** for the Otsuka Corporation internship programme, Tokyo
 - **98.61 percentile** in JEE Mains among 1.2M+ candidates · **Top 450** in WBJEE
 - **AIR 71** (Junior Squad) and City Topper — Technothlon Prelims
-- **Top 20 nationally** for solo ML pipeline contribution at Tecnod8.ai
+- **Top 15 nationally** for solo ML pipeline contribution at Tecnod8.ai
 - Selected from **200+ startups** by IITM NIRMAAN for R.E.A.C.H.
 
 ---
