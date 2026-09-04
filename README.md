@@ -265,9 +265,10 @@ probe on 200 utterances now runs first: under ~10 points, harden the channel ins
 
 **Four numbers, and the fourth is the one people skip.** Clean zero-shot is the ceiling, degraded zero-shot
 the baseline, degraded fine-tuned the result — and clean fine-tuned is what the result cost. Without it,
-"it learned to handle phone audio" and "it learned to *only* handle phone audio" are indistinguishable.
-Measured: 4.37% → 5.24%, +0.87 pp, CI [+0.35, +1.40] — real, and mild. The gain is −2.56 pp, CI [1.31, 3.85]
-over a paired bootstrap, paired because both systems score on byte-identical audio.
+"it learned to handle phone audio" and "it learned to *only* handle phone audio" are indistinguishable. The
+gain is −2.56 pp, CI [1.31, 3.85] over a paired bootstrap; the cost is +0.87 pp on clean, CI [+0.35, +1.40].
+Read honestly, that recovers 2.56 of the 19.39 points the channel cost — about 13% of the gap. Real, and
+modest.
 
 **One curve, not two effects.** The gain is monotone in SNR even in relative terms — 14.8% / 8.7% / 3.1%
 across the bands, then −19.9% on clean. The regression is that curve's endpoint, not a separate finding: the
