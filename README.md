@@ -294,7 +294,12 @@ companding, ESC-50 sirens and traffic at −5 to 10 dB SNR, and 5% packet loss o
 Then it LoRA fine-tunes Whisper on that channel and serves the result over HTTP to
 [reach-app](https://github.com/CyberRik/reach-app).
 
-**23.76% → 21.20% WER, 10.8% relative** · **4.37% clean-audio ceiling measured first** · **30 signal-property and contract tests**
+**23.76% → 21.20% WER, −2.56 pp (95% CI −3.85 to −1.31)** · **+0.87 pp cost on clean audio, measured not assumed** · **4.37% clean ceiling** · **30 signal-property and contract tests**
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/wer-by-snr-dark.svg">
+  <img alt="WER by SNR band: zero-shot versus fine-tuned for -5 to 0, 0 to 5 and 5 to 10 dB and for clean audio. The gain shrinks as SNR rises and reverses sign on clean." src="docs/wer-by-snr.svg">
+</picture>
 
 <details>
 <summary><b>Engineering notes</b></summary>
@@ -315,10 +320,39 @@ that isn't there. The fix is a seven-minute probe on 200 utterances before any t
 is under ~10 points, harden the channel instead of training. `whisper-base` at −5 to 10 dB showed 19.2, which
 is what made the real run worth doing.
 
-**Three numbers, because any one alone misleads.** Clean zero-shot is the ceiling; degraded zero-shot is the
-baseline; degraded fine-tuned is the result. Quoting the third against the *first* would credit the fine-tune
-with the entire cost of the channel — the standard way this experiment gets oversold. Read honestly, the
-fine-tune recovered 2.56 of the 19.39 points the channel cost, about 13% of the gap. Real, and modest.
+**Four numbers, because any subset of them misleads.** Clean zero-shot is the ceiling; degraded zero-shot is
+the baseline; degraded fine-tuned is the result; clean fine-tuned is what the result cost. Quoting the third
+against the *first* would credit the fine-tune with the entire cost of the channel. Quoting the first three
+without the fourth leaves "it learned to handle phone audio" and "it learned to *only* handle phone audio"
+indistinguishable. Both are standard ways this experiment gets oversold. Read honestly, the fine-tune
+recovered 2.56 of the 19.39 points the channel cost — about 13% of the gap — and gave up 0.87 points on clean
+speech to do it.
+
+**The fourth cell is the one most single-condition fine-tunes skip.** A LoRA trained only on one narrow
+degraded channel can buy its gain by giving up wideband speech, and at low rank that is routine rather than
+exotic. Measured: clean WER 4.37% → 5.24%, +0.87 pp, 95% CI [+0.35, +1.40]. The interval excludes zero, so
+the regression is real — but mild; a model that had genuinely collapsed onto the channel would be in the
+teens. It cost one extra evaluation pass and no retraining, which is a poor reason to leave the question open.
+
+**A delta without an interval is not a result.** 2.56 points from 300 utterances, one seed, one training run,
+quoted bare, invites exactly the question it cannot answer. A paired bootstrap over 10,000 resamples puts it
+at [1.31, 3.85] with 0.00% of resamples showing no improvement — paired because both systems are scored on
+byte-identical audio, which the degradation pipeline guarantees by seed, so resampling them independently
+would widen the interval with variance the design already removed.
+
+**One curve, not two effects.** The gain is monotone in SNR and stays monotone in *relative* terms — 14.8% at
+−5 to 0 dB, 8.7% at 0 to 5, 3.1% at 5 to 10, and −19.9% on clean. Read the clean regression as that curve's
+endpoint and the result is a single reallocation of capacity along the SNR axis rather than a gain plus an
+unrelated cost. It also lands where the premise says it should: the low-SNR bucket is the one that matters
+for emergency audio, and it is the one that improved most.
+
+**The SNR labels are not the condition they claim to be, and the results show it.** The mix is scaled to a
+target *mean* power over the whole clip, before the channel. A door-knock clip is three transients in five
+seconds of silence, so hitting that mean leaves it nearly absent during the speech — and `door_wood_knock` is
+duly the largest and easiest category in the breakdown, pulling the corpus mean down under a label that says
+otherwise. Band-limiting is linear and moves speech and noise by different amounts, so the ratio after the
+channel is not the one recorded. The fix is an active-speech measurement (ITU-T P.56) taken after the channel
+rather than before it. Documented rather than quietly left in place.
 
 **A test caught a real filter bug.** A single `lowpass_biquad` is 2nd-order — 12 dB/octave — and left ~10%
 of a 6 kHz tone standing inside a filter claiming to be a telephone passband. Understating the degradation
