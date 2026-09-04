@@ -296,74 +296,37 @@ Then it LoRA fine-tunes Whisper on that channel and serves the result over HTTP 
 
 **23.76% → 21.20% WER, −2.56 pp (95% CI −3.85 to −1.31)** · **+0.87 pp cost on clean audio, measured not assumed** · **4.37% clean ceiling** · **30 signal-property and contract tests**
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/wer-by-snr-dark.svg">
-  <img alt="WER by SNR band: zero-shot versus fine-tuned for -5 to 0, 0 to 5 and 5 to 10 dB and for clean audio. The gain shrinks as SNR rises and reverses sign on clean." src="docs/wer-by-snr.svg">
-</picture>
-
 <details>
 <summary><b>Engineering notes</b></summary>
 
 <br/>
 
-**The first run failed, and the loss curve said it was working.** Training loss fell steadily from 1.82 to
-0.71 while WER more than *doubled* — 5.52% to 11.89%, worse in every SNR bucket. The cause was in the
-targets: LibriSpeech references are ALL CAPS with no punctuation, Whisper emits cased punctuated text, and
-BPE splits uppercase into far more tokens than the same words in normal case. The model spent its capacity
-learning a formatting change, then got no credit for it because the eval normalizer strips case and
-punctuation anyway. It was learning to shout, not to hear. The loss curve could not have detected that —
-it was a correct measurement of progress against the wrong objective. Only the three-way WER split caught it.
+**The first run failed, and the loss curve said it was working.** Loss fell steadily from 1.82 to 0.71 while
+WER more than *doubled* — 5.52% to 11.89%, worse in every SNR bucket. The cause was in the targets:
+LibriSpeech references are ALL CAPS, Whisper emits cased text, and BPE splits uppercase into far more tokens.
+The model spent its capacity learning a formatting change the eval normalizer then strips. It was learning to
+shout, not to hear — and the loss curve was a correct measurement against the wrong objective.
 
-**Measure the headroom before spending the GPU.** The same run had a second problem: `whisper-small` scored
-3.06% clean and 5.52% degraded on that channel — 2.5 points of headroom total. No fine-tune recovers a gap
-that isn't there. The fix is a seven-minute probe on 200 utterances before any training: if clean-vs-degraded
-is under ~10 points, harden the channel instead of training. `whisper-base` at −5 to 10 dB showed 19.2, which
-is what made the real run worth doing.
+**Measure the headroom before spending the GPU.** `whisper-small` scored 3.06% clean and 5.52% degraded on
+that channel — 2.5 points of headroom total, and no fine-tune recovers a gap that isn't there. A seven-minute
+probe on 200 utterances now runs first: under ~10 points, harden the channel instead of training.
 
-**Four numbers, because any subset of them misleads.** Clean zero-shot is the ceiling; degraded zero-shot is
-the baseline; degraded fine-tuned is the result; clean fine-tuned is what the result cost. Quoting the third
-against the *first* would credit the fine-tune with the entire cost of the channel. Quoting the first three
-without the fourth leaves "it learned to handle phone audio" and "it learned to *only* handle phone audio"
-indistinguishable. Both are standard ways this experiment gets oversold. Read honestly, the fine-tune
-recovered 2.56 of the 19.39 points the channel cost — about 13% of the gap — and gave up 0.87 points on clean
-speech to do it.
+**Four numbers, and the fourth is the one people skip.** Clean zero-shot is the ceiling, degraded zero-shot
+the baseline, degraded fine-tuned the result — and clean fine-tuned is what the result cost. Without it,
+"it learned to handle phone audio" and "it learned to *only* handle phone audio" are indistinguishable.
+Measured: 4.37% → 5.24%, +0.87 pp, CI [+0.35, +1.40] — real, and mild. The gain is −2.56 pp, CI [1.31, 3.85]
+over a paired bootstrap, paired because both systems score on byte-identical audio.
 
-**The fourth cell is the one most single-condition fine-tunes skip.** A LoRA trained only on one narrow
-degraded channel can buy its gain by giving up wideband speech, and at low rank that is routine rather than
-exotic. Measured: clean WER 4.37% → 5.24%, +0.87 pp, 95% CI [+0.35, +1.40]. The interval excludes zero, so
-the regression is real — but mild; a model that had genuinely collapsed onto the channel would be in the
-teens. It cost one extra evaluation pass and no retraining, which is a poor reason to leave the question open.
+**One curve, not two effects.** The gain is monotone in SNR even in relative terms — 14.8% / 8.7% / 3.1%
+across the bands, then −19.9% on clean. The regression is that curve's endpoint, not a separate finding: the
+adapter reallocates capacity along the SNR axis, and it gains most in the low-SNR bucket that actually
+matters here.
 
-**A delta without an interval is not a result.** 2.56 points from 300 utterances, one seed, one training run,
-quoted bare, invites exactly the question it cannot answer. A paired bootstrap over 10,000 resamples puts it
-at [1.31, 3.85] with 0.00% of resamples showing no improvement — paired because both systems are scored on
-byte-identical audio, which the degradation pipeline guarantees by seed, so resampling them independently
-would widen the interval with variance the design already removed.
-
-**One curve, not two effects.** The gain is monotone in SNR and stays monotone in *relative* terms — 14.8% at
-−5 to 0 dB, 8.7% at 0 to 5, 3.1% at 5 to 10, and −19.9% on clean. Read the clean regression as that curve's
-endpoint and the result is a single reallocation of capacity along the SNR axis rather than a gain plus an
-unrelated cost. It also lands where the premise says it should: the low-SNR bucket is the one that matters
-for emergency audio, and it is the one that improved most.
-
-**The SNR labels are not the condition they claim to be, and the results show it.** The mix is scaled to a
-target *mean* power over the whole clip, before the channel. A door-knock clip is three transients in five
-seconds of silence, so hitting that mean leaves it nearly absent during the speech — and `door_wood_knock` is
-duly the largest and easiest category in the breakdown, pulling the corpus mean down under a label that says
-otherwise. Band-limiting is linear and moves speech and noise by different amounts, so the ratio after the
-channel is not the one recorded. The fix is an active-speech measurement (ITU-T P.56) taken after the channel
-rather than before it. Documented rather than quietly left in place.
-
-**A test caught a real filter bug.** A single `lowpass_biquad` is 2nd-order — 12 dB/octave — and left ~10%
-of a 6 kHz tone standing inside a filter claiming to be a telephone passband. Understating the degradation
-would have overstated the WER gap it produces. It's three cascaded sections now (~36 dB/octave). An
-augmentation pipeline is uniquely easy to get silently wrong: a mis-scaled mix or a filter that does nothing
-still sounds plausible and trains without error, and the only symptom is a number that means something other
-than what you claim.
-
-**Failure is degraded, never lost.** If the ASR service is down, reach-app attaches the recording
-untranscribed and the dispatcher plays it. The audio is the report; the transcript is an enrichment. An
-inference outage must not be why someone's emergency recording disappears.
+**The augmentation is the experiment, so it is tested like one.** A single `lowpass_biquad` is 2nd-order and
+left ~10% of a 6 kHz tone standing inside a filter claiming to be a telephone passband — understating the
+damage would have overstated the gap it produces. Three cascaded sections now. A remaining flaw is documented
+rather than hidden: SNR is scaled to a mean over the whole clip, before the channel, so an impulsive noise
+clip is nearly absent during the speech and its label is not the condition scored.
 
 </details>
 
