@@ -43,7 +43,7 @@ The through-line in most of my work is **verification** — a system that claims
 test that asserts it, a model that cites a statistic should be structurally unable to invent one, and a
 benchmark is only worth the things it holds fixed.
 
-**Currently:** SDE Intern at **Otsuka Corporation**, Tokyo · building [Ancora](https://github.com/CyberRik/Ancora) and [TinyServe](https://github.com/CyberRik/tinyserve) · graduating 2027.
+**Currently:** building [Ancora](https://github.com/CyberRik/Ancora) and [TinyServe](https://github.com/CyberRik/tinyserve) · previously AI/ML Engineer Intern at **Otsuka Corporation**, Tokyo · graduating 2027.
 
 > Each project below opens — the summary is the claim, the dropdown is how it was earned.
 
@@ -160,7 +160,7 @@ Decomposes a request into a capability graph, resolves it as a dependency-aware 
 against retrieval and tool backends. Sales coaching is a judgement task where a confidently invented win
 rate is worse than no answer — so grounding is mechanical, not prompted.
 
-**5× inference throughput** — 11 → 55 tok/s
+**About 70 tok/s** on a single Qwen3.6-35B MoE (about 3B active per token), against roughly 10 on the 27B it replaced
 
 <details>
 <summary><b>Engineering notes</b></summary>
@@ -186,7 +186,8 @@ unlisted number won't.
 
 **Model routing decided with data.** A bf16 8B gave only 1.11× — bandwidth-bound. Q4 was the actual lever:
 2.72× wall, 3.8× decode, at measured grounding parity (0.969 vs 0.969), cutting the slowest workflow from
-334s to 152s. Style was the cost, not accuracy.
+334s to 152s. Style was the cost, not accuracy. That 27B/8B split was later retired: one MoE now does both tool
+selection and synthesis, at about 70 tok/s with thinking off.
 
 </details>
 
@@ -199,7 +200,7 @@ unlisted number won't.
 Synthetic-data pipelines, QLoRA fine-tuning of Qwen3-8B on an NVIDIA DGX Spark, and an automated eval
 harness scored against the Berkeley Function-Calling Leaderboard.
 
-**97% BFCL accuracy** (single-turn) · **50K+** synthetic training examples
+**86.6%** across 8 BFCL v4 single-turn categories · **97.0%** on `simple_python` · **50K+** synthetic training examples
 
 <details>
 <summary><b>Engineering notes</b></summary>
@@ -228,8 +229,8 @@ tool is distinct from hallucinating one. Inventing, omitting and mistyping argum
 schema failures. There are behavioural categories too, for calling a tool where the model should have asked
 a clarifying question — failures any output-shape metric scores as fine.
 
-*Note: training token accuracy and BFCL accuracy both land near 96–97% here and measure entirely different
-things. Kept separate deliberately.*
+*Note: training token accuracy lands near 96–97%, the same range as the best `simple_python` score — they
+measure entirely different things. Kept separate deliberately.*
 
 </details>
 
@@ -410,10 +411,11 @@ Agentic request routing — dispatching to the appropriate model or tool rather 
 
 ## Experience
 
-**Otsuka Corporation** · SDE Intern · Tokyo, Japan · *May – Jul 2026*
+**Otsuka Corporation** · AI/ML Engineer Intern · Tokyo, Japan · *May – Jul 2026*
 <br/><sub>Only student selected from IIT Madras for the programme.</sub>
 Trained the model and architected the platform it runs inside — 50K+ synthetic examples, QLoRA fine-tuning of
-Qwen3-8B to **97% BFCL**, and Senpai's capability-graph execution layer at **5× throughput** (11 → 55 tok/s).
+Qwen3-8B to **86.6% across 8 BFCL categories** (97.0% on `simple_python`), and Senpai's serving consolidated onto
+a single MoE at about **70 tok/s** against roughly 10.
 
 **Gravton Labs** · AI Engineer Intern · Ontario, Canada (Remote) · *Feb – May 2026*
 Owned the crawl and attribution layer under a GEO visibility platform — typed crawl budgets that decide page
@@ -421,13 +423,13 @@ quality before spend, and scoped citation attribution that can honestly return n
 from Encore TypeScript to **FastAPI** on Railway + Supabase, mid-flight.
 
 **OctonData** · Software Engineer Intern · San Francisco (Remote) · *Oct – Dec 2025*
-Primary engineer on a document-intelligence platform running **10K+ pages/month** — hybrid OCR, layout
-detection and LLM fallback routing, with **20–30%** better long-document RAG. **10+ CPA firms** onboarded,
-manual review time cut **40%+**.
+Primary engineer on a document-intelligence platform on **GCP** — Table Transformer layout detection,
+page-by-page tax parsing with a Gemini Vision fallback, and bounded-concurrent long-document extraction.
+Shipped to **10+ U.S. CPA firms**, manual review time cut **40%+**.
 
 **Tecnod8.ai** · ML Intern · Remote · *Sep – Oct 2025*
 Multilingual document parsing across **5+ languages** including RTL and Devanagari (YOLOv10, PaddleOCR,
-Qwen3-VL).
+Qwen2.5-VL).
 
 ---
 
