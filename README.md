@@ -427,7 +427,7 @@ manual review time cut **40%+**.
 
 **Tecnod8.ai** · ML Intern · Remote · *Sep – Oct 2025*
 Multilingual document parsing across **5+ languages** including RTL and Devanagari (YOLOv10, PaddleOCR,
-Qwen3-VL). Ranked **Top 20 nationally** for solo pipeline contribution.
+Qwen3-VL).
 
 ---
 
@@ -515,7 +515,7 @@ Qwen3-VL). Ranked **Top 20 nationally** for solo pipeline contribution.
 - **Only student selected from IIT Madras** for the Otsuka Corporation internship programme, Tokyo
 - **98.61 percentile** in JEE Mains among 1.2M+ candidates · **Top 450** in WBJEE
 - **AIR 71** (Junior Squad) and City Topper — Technothlon Prelims
-- **Top 15 nationally** for solo ML pipeline contribution at Tecnod8.ai
+- **Top 15 nationally** — NCIIPC (Govt. of India) Startup India AI Grand Challenge, Intelligent Multilingual Document Understanding
 - Selected from **200+ startups** by IITM NIRMAAN for R.E.A.C.H.
 
 ---
