@@ -235,6 +235,53 @@ things. Kept separate deliberately.*
 
 ---
 
+### [indic-speaker-asr](https://github.com/CyberRik/indic-speaker-asr) — who said what, in multi-speaker Indic audio
+
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/pyannote-5A5A5A?style=flat-square" /> <img src="https://img.shields.io/badge/NVIDIA%20NeMo-76B900?style=flat-square&logo=nvidia&logoColor=white" /> <img src="https://img.shields.io/badge/ONNX%20Runtime-005CED?style=flat-square&logo=onnx&logoColor=white" /> <img src="https://img.shields.io/badge/Whisper-412991?style=flat-square&logo=openai&logoColor=white" />
+
+Long conversational recordings — 12 hours, 9 Indic scripts, 2 to 8 speakers — diarized, transcribed, and every
+word put under the right speaker. Each recording is transcribed **once** and its words assigned to the diarizer's
+turns, so every diarizer is compared on identical words and a cpWER difference is purely a labelling difference.
+Scored strictly: collar 0, overlapped speech included.
+
+**WER 93.66 → 78.82** from one decoding fix · **cpWER 79.67 → 72.96, 0 of 99 recordings worse** · **DER 27.34** at collar 0 · an LLM relabeller built, measured and rejected
+
+<details>
+<summary><b>Engineering notes</b></summary>
+
+<br/>
+
+**The model was fine; the decode was wrong.** IndicConformer's output spelled phonetically correct words across
+six scripts at once. The CTC head is *multi-softmax* — each language's 256-token block was trained under its own
+softmax, so a Kannada logit and a Marathi logit were never meant to be compared, and a global argmax compares
+them on every frame. Voting for the recording's language over its frames, then decoding inside that block, took
+WER from 93.66 to 78.82. The naive decode stays in the results table as a scored ablation rather than a claim.
+
+**A benchmark nobody can rerun isn't one.** faster-whisper's default temperature fallback re-decodes hard
+segments by *sampling*, unseeded: one recording gave 87, 84 and 100 words on three identical runs. At
+temperature 0 it gives 211 words every time — reproducible *and* better, and the corpus run fell from 396 to 153
+minutes.
+
+**The fix that held was the unglamorous one.** On 13 recordings the model's own language vote picked Urdu or
+Nepali, so the whole transcript came out in the wrong script and scored 100% WER regardless of what was heard —
+spoken Hindi and Urdu differ mainly in script. Falling back to Whisper when the detected language is outside the
+target set cut cpWER to 72.96 with no recording worse. Not fitted to scores: routing Hindi- or Marathi-detected
+recordings to Whisper instead made WER *worse* (82.56).
+
+**Measure the ceiling before blaming the model.** LLM speaker relabelling (Qwen2.5-7B, in the spirit of
+DiarizationLM) was guarded — confidence threshold, rogue-edit discard, an assertion that text never changes — and
+still moved WDER the wrong way, 20.12 → 20.96. An oracle audit explained it: even after splitting at pauses,
+**37.87% of words** sit in units spanning two true speakers, where no relabel can help. Its confidences were
+always 0.8 or 0.9 — a number, not a signal.
+
+**Look where the error is, not where it's expected.** Only 24% of pyannote's error seconds fall in overlapped
+speech; most of it is ordinary single-speaker confusion — so source separation, the obvious next build, was not
+the first one.
+
+</details>
+
+---
+
 ### [reach-asr](https://github.com/CyberRik/reach-asr) — noise-robust speech recognition for telephony audio
 
 <img src="https://img.shields.io/badge/Whisper-412991?style=flat-square&logo=openai&logoColor=white" /> <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" /> <img src="https://img.shields.io/badge/LoRA%20%2F%20PEFT-FFD21E?style=flat-square&logo=huggingface&logoColor=black" /> <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" />
