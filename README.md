@@ -110,6 +110,8 @@ same scheduling *ideas* somewhere fully explainable.
 
 **Continuous batching validated with a real POC first** · **97.2% of wall time in `llama_decode()`** (measured, not assumed) · **WFQ bounds unfairness 2.54× vs strict Priority's 3.87×**
 
+**▶ [Watch the 0:45 demo](https://youtu.be/ruPoUDw6xg4)** — the real server, nothing mocked: 16 concurrent streams sharing 2 decode slots, then the same requests under FIFO, Priority and WFQ, hot-swapped on the live server: [jump to the scheduler comparison at 0:25](https://youtu.be/ruPoUDw6xg4?t=25). Run from a browser at 6 requests, so its ratios are smaller than the benchmark's; the ordering is the same.
+
 <details>
 <summary><b>Engineering notes</b></summary>
 
