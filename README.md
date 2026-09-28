@@ -18,6 +18,9 @@
   <a href="https://github.com/CyberRik?tab=repositories">
     <img src="https://img.shields.io/badge/Repositories-181717?style=flat-square&logo=github&logoColor=white" alt="Repositories" />
   </a>
+  <a href="https://leetcode.com/u/Rik0411/">
+    <img src="https://img.shields.io/badge/LeetCode-FFA116?style=flat-square&logo=leetcode&logoColor=white" alt="LeetCode" />
+  </a>
 </p>
 
 <p align="center">
@@ -528,6 +531,7 @@ Qwen2.5-VL).
 
 <img height="150" src="https://github-stats-extended.vercel.app/api?username=CyberRik&show_icons=true&theme=graywhite&hide_border=true&hide_title=true&include_all_commits=true&count_private=true&icon_color=555555&text_color=555555" alt="GitHub statistics" />
 <img height="150" src="https://github-stats-extended.vercel.app/api/top-langs/?username=CyberRik&layout=compact&theme=graywhite&hide_border=true&hide_title=true&langs_count=8&text_color=555555" alt="Most used languages" />
+<a href="https://leetcode.com/u/Rik0411/"><img height="150" src="https://leetcard.jacoblin.cool/Rik0411?theme=light&font=Source%20Code%20Pro&border=0&radius=0" alt="LeetCode statistics" /></a>
 
 <br/><br/>
 
