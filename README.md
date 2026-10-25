@@ -48,6 +48,16 @@ benchmark is only worth the things it holds fixed.
 
 **Currently:** building [Ancora](https://github.com/CyberRik/Ancora) and [TinyServe](https://github.com/CyberRik/tinyserve) · previously AI/ML Engineer Intern at **Otsuka Corporation**, Tokyo · graduating 2027.
 
+---
+
+## Open source
+
+- **[Meshery](https://github.com/meshery/meshery)** (CNCF): [#22574](https://github.com/meshery/meshery/pull/22574), fixing the Helm Snapshot docs (broken install URL and outdated plugin commands)
+
+<div><a href="https://cloud.layer5.io/user/e5bf077c-7dc5-4d14-8f42-d99e4f83417d?tab=badges&badge=first-design" alt="First Design" ><img width="175px" height="252px" src="https://badges.layer5.io/assets/badges/first-design/first-design.png" alt="First Design" /></a><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup><a href="https://badges.layer5.io">Get your own badge</a></sup></div>
+
+---
+
 > Each project below opens — the summary is the claim, the dropdown is how it was earned.
 
 ---
