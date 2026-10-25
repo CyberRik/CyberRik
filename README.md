@@ -52,7 +52,15 @@ benchmark is only worth the things it holds fixed.
 
 ## Open source
 
-- **[Meshery](https://github.com/meshery/meshery)** (CNCF): [#22574](https://github.com/meshery/meshery/pull/22574), fixing the Helm Snapshot docs (broken install URL and outdated plugin commands)
+- **[Docling](https://github.com/docling-project)** (LF AI & Data)
+  - merged: [docling#4601](https://github.com/docling-project/docling/pull/4601), HTML conversion no longer aborts when a link or image points outside the base directory
+  - merged: [docling#4602](https://github.com/docling-project/docling/pull/4602), EPUB images with single-quoted or percent-escaped sources now resolve
+  - merged: [docling-serve#721](https://github.com/docling-project/docling-serve/pull/721), `default_code_formula_preset` now points at a preset that exists
+  - open: [docling#4636](https://github.com/docling-project/docling/pull/4636) (EPUB image src query/fragment), [docling-core#854](https://github.com/docling-project/docling-core/pull/854) (chunker keeps a table caption in the same window as its table)
+- **[Feast](https://github.com/feast-dev/feast)** (LF AI & Data)
+  - open: [feast#6985](https://github.com/feast-dev/feast/pull/6985), warm up the whole DynamoDB connection pool instead of a single connection
+- **[Meshery](https://github.com/meshery/meshery)** (CNCF)
+  - open: [meshery#22574](https://github.com/meshery/meshery/pull/22574), fixing the Helm Snapshot docs (broken install URL and outdated plugin commands)
 
 <div><a href="https://cloud.layer5.io/user/e5bf077c-7dc5-4d14-8f42-d99e4f83417d?tab=badges&badge=first-design" alt="First Design" ><img width="175px" height="252px" src="https://badges.layer5.io/assets/badges/first-design/first-design.png" alt="First Design" /></a><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup><a href="https://badges.layer5.io">Get your own badge</a></sup></div>
 
