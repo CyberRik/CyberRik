@@ -74,14 +74,14 @@ benchmark is only worth the things it holds fixed.
 
 ### [Ancora](https://github.com/CyberRik/Ancora) — a durable execution runtime for AI workflows
 
-<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/Temporal-000000?style=flat-square&logo=temporal&logoColor=white" /> <img src="https://img.shields.io/badge/Ray-028CF0?style=flat-square&logo=ray&logoColor=white" /> <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" /> <img src="https://img.shields.io/badge/OpenTelemetry-425CC7?style=flat-square&logo=opentelemetry&logoColor=white" /> <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white" />
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/Temporal-000000?style=flat-square&logo=temporal&logoColor=white" /> <img src="https://img.shields.io/badge/Ray-028CF0?style=flat-square&logo=ray&logoColor=white" /> <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" /> <img src="https://img.shields.io/badge/OpenTelemetry-425CC7?style=flat-square&logo=opentelemetry&logoColor=white" /> <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white" /> <a href="https://www.bestpractices.dev/projects/15907"><img src="https://www.bestpractices.dev/projects/15907/badge" alt="OpenSSF Best Practices" /></a>
 
 AI pipelines lose work for boring reasons: an LLM call 500s, a GPU worker OOMs, a pod gets evicted — and a
 multi-step, multi-dollar computation vanishes with no way to resume. Ancora records every side-effecting step
 as an immutable event, so a worker can die mid-run and the workflow replays to exact state and continues.
 It isn't an agent framework; it's the runtime that belongs underneath one.
 
-**~60s → ~6s kill detection** · **284 tests green** · `mypy --strict` clean · chaos experiments that assert
+**~60s → ~6s kill detection** · **284 tests green** · `mypy --strict` clean · chaos experiments that assert · **[OpenSSF Best Practices: passing](https://www.bestpractices.dev/projects/15907)**
 
 **▶ [Watch the 2:38 demo](https://youtu.be/UVKmMZnP50A)** — the running system end to end, nothing mocked. It closes by SIGKILLing a live worker mid-run and machine-checking that the run recovered correctly: [jump straight to that at 2:01](https://youtu.be/UVKmMZnP50A?t=121).
 
