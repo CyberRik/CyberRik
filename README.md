@@ -63,10 +63,10 @@ benchmark is only worth the things it holds fixed.
   - open: [meshery#22574](https://github.com/meshery/meshery/pull/22574), fixing the Helm Snapshot docs (broken install URL and outdated plugin commands)
 - **[Ancora](https://github.com/CyberRik/Ancora)** (my project): earned the OpenSSF Best Practices passing badge, with CodeQL, Dependabot, private vulnerability reporting and zero open security alerts <a href="https://www.bestpractices.dev/projects/15907"><img src="https://www.bestpractices.dev/projects/15907/badge" alt="OpenSSF Best Practices: passing" align="absmiddle" /></a>
 
-<p>
-  <a href="https://www.bestpractices.dev/projects/15907"><img height="180" src="https://raw.githubusercontent.com/CyberRik/CyberRik/main/assets/openssf-best-practices.png" alt="OpenSSF Best Practices badge (Ancora, passing)" /></a>
+<p align="left">
+  <a href="https://www.bestpractices.dev/projects/15907"><img height="180" align="middle" src="https://raw.githubusercontent.com/CyberRik/CyberRik/main/assets/openssf-best-practices.png" alt="OpenSSF Best Practices badge (Ancora, passing)" /></a>
   &nbsp;&nbsp;&nbsp;
-  <a href="https://cloud.layer5.io/user/e5bf077c-7dc5-4d14-8f42-d99e4f83417d?tab=badges&badge=first-design"><img height="180" src="https://badges.layer5.io/assets/badges/first-design/first-design.png" alt="Layer5 First Design badge" /></a>
+  <a href="https://cloud.layer5.io/user/e5bf077c-7dc5-4d14-8f42-d99e4f83417d?tab=badges&badge=first-design"><img height="212" align="middle" src="https://badges.layer5.io/assets/badges/first-design/first-design.png" alt="Layer5 First Design badge" /></a>
 </p>
 
 ---
