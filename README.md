@@ -60,7 +60,7 @@ benchmark is only worth the things it holds fixed.
 - **[Feast](https://github.com/feast-dev/feast)** (LF AI & Data)
   - open: [feast#6985](https://github.com/feast-dev/feast/pull/6985), warm up the whole DynamoDB connection pool instead of a single connection
 - **[Meshery](https://github.com/meshery/meshery)** (CNCF)
-  - open: [meshery#22574](https://github.com/meshery/meshery/pull/22574), fixing the Helm Snapshot docs (broken install URL and outdated plugin commands)
+  - merged: [meshery#22574](https://github.com/meshery/meshery/pull/22574), Helm Snapshot docs now give a working install URL and current plugin commands
 - **[Ancora](https://github.com/CyberRik/Ancora)** (my project): earned the OpenSSF Best Practices passing badge, with CodeQL, Dependabot, private vulnerability reporting and zero open security alerts <a href="https://www.bestpractices.dev/projects/15907"><img src="https://www.bestpractices.dev/projects/15907/badge" alt="OpenSSF Best Practices: passing" align="absmiddle" /></a>
 
 <p align="left">
