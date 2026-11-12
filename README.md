@@ -13,7 +13,6 @@
   <a href="https://ritankar-mondal.vercel.app/"><img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
   <a href="mailto:ritankarmondal123@gmail.com"><img src="https://img.shields.io/badge/Email-3FCF8E?style=for-the-badge&logo=gmail&logoColor=black" alt="Email" /></a>
   <a href="https://github.com/CyberRik?tab=repositories"><img src="https://img.shields.io/badge/Repositories-181717?style=for-the-badge&logo=github&logoColor=white" alt="Repositories" /></a>
-  <a href="https://leetcode.com/u/Rik0411/"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode" /></a>
   <img src="https://komarev.com/ghpvc/?username=CyberRik&style=for-the-badge&color=3FCF8E&label=PROFILE+VIEWS" alt="Profile views" />
 </p>
 
@@ -578,7 +577,6 @@ Qwen2.5-VL).
   <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=CyberRik&hide_border=true&background=00000000&ring=3FCF8E&fire=3FCF8E&currStreakLabel=3FCF8E&sideLabels=c9d1d9&dates=8b949e&currStreakNum=ffffff&sideNums=ffffff&stroke=30363d" />
   <img height="150" src="https://streak-stats.demolab.com?user=CyberRik&hide_border=true&background=00000000&ring=1a7f5a&fire=1a7f5a&currStreakLabel=1a7f5a&sideLabels=555555&dates=777777&currStreakNum=24292f&sideNums=24292f&stroke=d0d7de" alt="Contribution streak" />
 </picture>
-<a href="https://leetcode.com/u/Rik0411/"><img height="150" src="https://leetcard.jacoblin.cool/Rik0411?theme=dark&font=JetBrains%20Mono&border=0&radius=8" alt="LeetCode statistics" /></a>
 
 <br/><br/>
 
