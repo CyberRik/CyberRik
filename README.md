@@ -1,6 +1,6 @@
 <!-- header -->
 <p align="center">
-  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,55:16302a,100:3FCF8E&height=210&section=header&text=Ritankar%20Mondal&fontSize=54&fontColor=ffffff&fontAlignY=36&desc=AI%20Engineer%20%C2%B7%20LLM%20systems%2C%20retrieval%20%26%20the%20infra%20underneath&descSize=17&descAlignY=58&animation=fadeIn" alt="Ritankar Mondal, AI Engineer" />
+  <img width="100%" src="assets/header.svg" alt="Ritankar Mondal, AI Engineer" />
 </p>
 
 <p align="center">
@@ -589,4 +589,4 @@ Qwen2.5-VL).
 
 </div>
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:3FCF8E,45:16302a,100:0d1117&height=120&section=footer" alt="" />
+<img width="100%" src="assets/footer.svg" alt="" />
