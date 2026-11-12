@@ -1,42 +1,36 @@
-<h1 align="center">Ritankar Mondal</h1>
-
+<!-- header -->
 <p align="center">
-  <b>AI Engineer</b> - LLM systems, retrieval, and the infrastructure underneath them
+  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,55:16302a,100:3FCF8E&height=210&section=header&text=Ritankar%20Mondal&fontSize=54&fontColor=ffffff&fontAlignY=36&desc=AI%20Engineer%20%C2%B7%20LLM%20systems%2C%20retrieval%20%26%20the%20infra%20underneath&descSize=17&descAlignY=58&animation=fadeIn" alt="Ritankar Mondal, AI Engineer" />
 </p>
 
 <p align="center">
-  B.Tech Chemical Engineering, <b>IIT Madras</b> (2023–2027) &nbsp;·&nbsp; Chennai, India
-</p>
-
-<p align="center">
-  <a href="https://ritankar-mondal.vercel.app/">
-    <img src="https://img.shields.io/badge/Portfolio-000000?style=flat-square&logo=vercel&logoColor=white" alt="Portfolio" />
-  </a>
-  <a href="mailto:ritankarmondal123@gmail.com">
-    <img src="https://img.shields.io/badge/Email-333333?style=flat-square&logo=maildotru&logoColor=white" alt="Email" />
-  </a>
-  <a href="https://github.com/CyberRik?tab=repositories">
-    <img src="https://img.shields.io/badge/Repositories-181717?style=flat-square&logo=github&logoColor=white" alt="Repositories" />
-  </a>
-  <a href="https://leetcode.com/u/Rik0411/">
-    <img src="https://img.shields.io/badge/LeetCode-FFA116?style=flat-square&logo=leetcode&logoColor=white" alt="LeetCode" />
+  <a href="https://github.com/CyberRik">
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=17&pause=1400&color=3FCF8E&center=true&vCenter=true&width=640&lines=Durable+execution+runtimes+for+AI+workflows;LLM+inference+scheduling%2C+built+from+scratch;Tool-calling+models+%E2%80%94+86.6%25+on+BFCL+v4;A+claim+is+only+as+good+as+the+test+behind+it" alt="Typing summary" />
   </a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white" />
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
-  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" />
-  <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" />
-  <img src="https://img.shields.io/badge/Temporal-000000?style=flat-square&logo=temporal&logoColor=white" />
-  <img src="https://img.shields.io/badge/Ray-028CF0?style=flat-square&logo=ray&logoColor=white" />
-  <img src="https://img.shields.io/badge/Airflow-017CEE?style=flat-square&logo=apacheairflow&logoColor=white" />
-  <img src="https://img.shields.io/badge/Postgres-4169E1?style=flat-square&logo=postgresql&logoColor=white" />
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" />
+  <a href="https://ritankar-mondal.vercel.app/"><img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
+  <a href="mailto:ritankarmondal123@gmail.com"><img src="https://img.shields.io/badge/Email-3FCF8E?style=for-the-badge&logo=gmail&logoColor=black" alt="Email" /></a>
+  <a href="https://github.com/CyberRik?tab=repositories"><img src="https://img.shields.io/badge/Repositories-181717?style=for-the-badge&logo=github&logoColor=white" alt="Repositories" /></a>
+  <a href="https://leetcode.com/u/Rik0411/"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode" /></a>
+</p>
+
+<p align="center">
+  <sub>B.Tech Chemical Engineering, <b>IIT Madras</b> (2023–2027) &nbsp;·&nbsp; Chennai, India &nbsp;·&nbsp; ex-<b>Otsuka Corporation</b>, Tokyo</sub>
+</p>
+
+<p align="center">
+  <a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=python,cpp,ts,pytorch,fastapi,postgres,redis,docker,gcp,linux&theme=dark&perline=10" alt="Core stack" /></a>
 </p>
 
 ---
+
+<table>
+<tr>
+<td width="62%" valign="top">
+
+### About
 
 I build LLM-powered applications, retrieval systems, and production backend infrastructure - tool-calling
 models, document intelligence, RAG pipelines, and the runtimes they execute on. Hands-on across the full
@@ -46,9 +40,19 @@ The through-line in most of my work is **verification** - a system that claims f
 test that asserts it, a model that cites a statistic should be structurally unable to invent one, and a
 benchmark is only worth the things it holds fixed.
 
-**Currently:** building [Ancora](https://github.com/CyberRik/Ancora) and [TinyServe](https://github.com/CyberRik/tinyserve) · previously AI/ML Engineer Intern at **Otsuka Corporation**, Tokyo · graduating 2027.
+</td>
+<td width="38%" valign="top">
 
----
+### Right now
+
+- 🛠️ building **[Ancora](https://github.com/CyberRik/Ancora)** and **[TinyServe](https://github.com/CyberRik/tinyserve)**
+- 🗼 previously AI/ML Engineer Intern at **Otsuka Corporation**, Tokyo
+- 🧩 contributor to **Docling**, **Feast**, **Meshery**
+- 🎓 graduating **2027**
+
+</td>
+</tr>
+</table>
 
 ## Open source
 
@@ -72,6 +76,53 @@ benchmark is only worth the things it holds fixed.
 ---
 
 > Each project below opens - the summary is the claim, the dropdown is how it was earned.
+
+---
+
+## At a glance
+
+<table>
+<tr>
+<td width="33%" valign="top">
+<a href="https://github.com/CyberRik/Ancora"><b>⚓ Ancora</b></a><br/>
+<sub>Durable execution runtime for AI workflows</sub><br/><br/>
+<code>~60s → ~6s</code> kill detection<br/>
+<code>284</code> tests · OpenSSF passing
+</td>
+<td width="33%" valign="top">
+<a href="https://github.com/CyberRik/tinyserve"><b>⚡ TinyServe</b></a><br/>
+<sub>From-scratch LLM inference runtime</sub><br/><br/>
+<code>97.2%</code> wall time in <code>llama_decode()</code><br/>
+WFQ unfairness <code>2.54×</code> vs <code>3.87×</code>
+</td>
+<td width="33%" valign="top">
+<a href="https://github.com/CyberRik/senpai"><b>🧭 senpai</b></a><br/>
+<sub>Enterprise AI execution platform</sub><br/><br/>
+<code>~70 tok/s</code> vs ~10 before<br/>
+numbers grounded by whitelist
+</td>
+</tr>
+<tr>
+<td width="33%" valign="top">
+<a href="https://github.com/CyberRik/tool-calling-bfcl"><b>🔧 tool-calling-bfcl</b></a><br/>
+<sub>Function-calling model training</sub><br/><br/>
+<code>86.6%</code> across 8 BFCL v4 categories<br/>
+<code>97.0%</code> on <code>simple_python</code>
+</td>
+<td width="33%" valign="top">
+<a href="https://github.com/CyberRik/indic-speaker-asr"><b>🗣️ indic-speaker-asr</b></a><br/>
+<sub>Who said what, in Indic audio</sub><br/><br/>
+WER <code>93.66 → 78.82</code><br/>
+cpWER <code>79.67 → 72.96</code>, 0/99 worse
+</td>
+<td width="33%" valign="top">
+<a href="https://github.com/CyberRik/reach-asr"><b>📞 reach-asr</b></a><br/>
+<sub>Noise-robust telephony ASR</sub><br/><br/>
+WER <code>23.76% → 21.20%</code><br/>
+clean-audio cost measured: <code>+0.87 pp</code>
+</td>
+</tr>
+</table>
 
 ---
 
@@ -477,65 +528,22 @@ Qwen2.5-VL).
 
 ---
 
-## Technical Skills
+## Tech stack
 
 <table>
-<tr><td><b>Languages</b></td><td>
-<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
-<img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white" />
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" />
-<img src="https://img.shields.io/badge/Bash-4EAA25?style=flat-square&logo=gnubash&logoColor=white" />
-</td></tr>
-<tr><td><b>LLM&nbsp;&&nbsp;ML</b></td><td>
-<img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" />
-<img src="https://img.shields.io/badge/Transformers-FFD21E?style=flat-square&logo=huggingface&logoColor=black" />
-<img src="https://img.shields.io/badge/QLoRA%20%2F%20LoRA%20%2F%20PEFT-EE4C2C?style=flat-square" />
-<img src="https://img.shields.io/badge/Instruction%20Tuning-5A5A5A?style=flat-square" />
-<img src="https://img.shields.io/badge/Tool%20%26%20Function%20Calling-5A5A5A?style=flat-square" />
-</td></tr>
-<tr><td><b>Retrieval</b></td><td>
-<img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white" />
-<img src="https://img.shields.io/badge/FAISS-0467DF?style=flat-square&logo=meta&logoColor=white" />
-<img src="https://img.shields.io/badge/ChromaDB-FF6F61?style=flat-square" />
-<img src="https://img.shields.io/badge/GraphRAG-1C3C3C?style=flat-square" />
-<img src="https://img.shields.io/badge/Hybrid%20Retrieval%20%26%20Reranking-5A5A5A?style=flat-square" />
-</td></tr>
-<tr><td><b>Document&nbsp;AI</b></td><td>
-<img src="https://img.shields.io/badge/Multimodal%20AI-5A5A5A?style=flat-square" />
-<img src="https://img.shields.io/badge/PaddleOCR-0062B0?style=flat-square" />
-<img src="https://img.shields.io/badge/YOLOv10-00FFFF?style=flat-square&logo=yolo&logoColor=black" />
-<img src="https://img.shields.io/badge/CV%20Layout%20Detection-5A5A5A?style=flat-square" />
-</td></tr>
-<tr><td><b>Backend</b></td><td>
-<img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" />
-<img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" />
-<img src="https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white" />
-<img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white" />
-<img src="https://img.shields.io/badge/AsyncIO-3776AB?style=flat-square&logo=python&logoColor=white" />
-</td></tr>
+<tr><td width="20%"><b>Languages</b></td><td><img src="https://skillicons.dev/icons?i=python,cpp,ts,js,bash&theme=dark" alt="Python, C++, TypeScript, JavaScript, Bash" /></td></tr>
+<tr><td><b>LLM&nbsp;&amp;&nbsp;ML</b></td><td><img src="https://skillicons.dev/icons?i=pytorch,sklearn,opencv&theme=dark" alt="PyTorch, scikit-learn, OpenCV" /><br/><sub>Transformers · QLoRA / LoRA / PEFT · instruction tuning · tool &amp; function calling · YOLOv10 · PaddleOCR</sub></td></tr>
+<tr><td><b>Retrieval</b></td><td><sub>LangChain · FAISS · ChromaDB · GraphRAG · hybrid retrieval &amp; reranking · multimodal document AI</sub></td></tr>
+<tr><td><b>Backend</b></td><td><img src="https://skillicons.dev/icons?i=fastapi,postgres,redis,supabase&theme=dark" alt="FastAPI, PostgreSQL, Redis, Supabase" /><br/><sub>AsyncIO</sub></td></tr>
 <tr><td><b>Pipelines</b></td><td>
-<img src="https://img.shields.io/badge/Temporal-000000?style=flat-square&logo=temporal&logoColor=white" />
-<img src="https://img.shields.io/badge/Ray-028CF0?style=flat-square&logo=ray&logoColor=white" />
-<img src="https://img.shields.io/badge/Airflow-017CEE?style=flat-square&logo=apacheairflow&logoColor=white" />
-<img src="https://img.shields.io/badge/Apify-FF9013?style=flat-square&logo=apify&logoColor=white" />
-<img src="https://img.shields.io/badge/n8n-EA4B71?style=flat-square&logo=n8n&logoColor=white" />
-<img src="https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white" />
-</td></tr>
-<tr><td><b>Cloud&nbsp;&&nbsp;Infra</b></td><td>
-<img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" />
-<img src="https://img.shields.io/badge/GCP-4285F4?style=flat-square&logo=googlecloud&logoColor=white" />
-<img src="https://img.shields.io/badge/Azure-0078D4?style=flat-square&logo=microsoftazure&logoColor=white" />
-<img src="https://img.shields.io/badge/Modal-7B68EE?style=flat-square" />
-<img src="https://img.shields.io/badge/Railway-0B0D0E?style=flat-square&logo=railway&logoColor=white" />
-<img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black" />
-</td></tr>
-<tr><td><b>Observability</b></td><td>
-<img src="https://img.shields.io/badge/OpenTelemetry-425CC7?style=flat-square&logo=opentelemetry&logoColor=white" />
-<img src="https://img.shields.io/badge/Jaeger-60D0E4?style=flat-square&logo=jaeger&logoColor=black" />
-<img src="https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white" />
-<img src="https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white" />
-</td></tr>
+<img src="https://img.shields.io/badge/Temporal-000000?style=for-the-badge&logo=temporal&logoColor=white" alt="Temporal" />
+<img src="https://img.shields.io/badge/Ray-028CF0?style=for-the-badge&logo=ray&logoColor=white" alt="Ray" />
+<img src="https://img.shields.io/badge/Airflow-017CEE?style=for-the-badge&logo=apacheairflow&logoColor=white" alt="Airflow" />
+<img src="https://img.shields.io/badge/n8n-EA4B71?style=for-the-badge&logo=n8n&logoColor=white" alt="n8n" />
+<br/><sub>Apify · Pandas</sub></td></tr>
+<tr><td><b>Cloud&nbsp;&amp;&nbsp;Infra</b></td><td><img src="https://skillicons.dev/icons?i=docker,gcp,azure,linux,vercel,githubactions&theme=dark" alt="Docker, GCP, Azure, Linux, Vercel, GitHub Actions" /><br/><sub>Modal · Railway</sub></td></tr>
+<tr><td><b>Observability</b></td><td><img src="https://skillicons.dev/icons?i=prometheus,grafana&theme=dark" alt="Prometheus, Grafana" /><br/><sub>OpenTelemetry · Jaeger</sub></td></tr>
+<tr><td><b>Frontend</b></td><td><img src="https://skillicons.dev/icons?i=nextjs,react,threejs&theme=dark" alt="Next.js, React, Three.js" /></td></tr>
 </table>
 
 ---
@@ -550,15 +558,28 @@ Qwen2.5-VL).
 
 ---
 
+## GitHub
+
 <div align="center">
 
-<img height="150" src="https://github-stats-extended.vercel.app/api?username=CyberRik&show_icons=true&theme=graywhite&hide_border=true&hide_title=true&include_all_commits=true&count_private=true&icon_color=555555&text_color=555555" alt="GitHub statistics" />
-<img height="150" src="https://github-stats-extended.vercel.app/api/top-langs/?username=CyberRik&layout=compact&theme=graywhite&hide_border=true&hide_title=true&langs_count=8&text_color=555555" alt="Most used languages" />
-<a href="https://leetcode.com/u/Rik0411/"><img height="150" src="https://leetcard.jacoblin.cool/Rik0411?theme=light&font=Source%20Code%20Pro&border=0&radius=0" alt="LeetCode statistics" /></a>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api?username=CyberRik&show_icons=true&theme=transparent&hide_border=true&hide_title=true&include_all_commits=true&count_private=true&icon_color=3FCF8E&text_color=c9d1d9" />
+  <img height="150" src="https://github-stats-extended.vercel.app/api?username=CyberRik&show_icons=true&theme=transparent&hide_border=true&hide_title=true&include_all_commits=true&count_private=true&icon_color=1a7f5a&text_color=555555" alt="GitHub statistics" />
+</picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/top-langs/?username=CyberRik&layout=compact&theme=transparent&hide_border=true&hide_title=true&langs_count=8&text_color=c9d1d9" />
+  <img height="150" src="https://github-stats-extended.vercel.app/api/top-langs/?username=CyberRik&layout=compact&theme=transparent&hide_border=true&hide_title=true&langs_count=8&text_color=555555" alt="Most used languages" />
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=CyberRik&hide_border=true&background=00000000&ring=3FCF8E&fire=3FCF8E&currStreakLabel=3FCF8E&sideLabels=c9d1d9&dates=8b949e&currStreakNum=ffffff&sideNums=ffffff&stroke=30363d" />
+  <img height="150" src="https://streak-stats.demolab.com?user=CyberRik&hide_border=true&background=00000000&ring=1a7f5a&fire=1a7f5a&currStreakLabel=1a7f5a&sideLabels=555555&dates=777777&currStreakNum=24292f&sideNums=24292f&stroke=d0d7de" alt="Contribution streak" />
+</picture>
+<a href="https://leetcode.com/u/Rik0411/"><img height="150" src="https://leetcard.jacoblin.cool/Rik0411?theme=dark&font=JetBrains%20Mono&border=0&radius=8" alt="LeetCode statistics" /></a>
 
 <br/><br/>
 
-<sub><b>Currently active</b></sub>
+<sub><b>Currently active</b></sub><br/>
 
 <a href="https://github.com/CyberRik/Ancora"><img src="https://img.shields.io/github/last-commit/CyberRik/Ancora?style=flat-square&label=Ancora&labelColor=181717&color=3FCF8E" alt="Ancora last commit" /></a>
 <a href="https://github.com/CyberRik/tinyserve"><img src="https://img.shields.io/github/last-commit/CyberRik/tinyserve?style=flat-square&label=TinyServe&labelColor=181717&color=3FCF8E" alt="TinyServe last commit" /></a>
@@ -566,6 +587,6 @@ Qwen2.5-VL).
 <a href="https://github.com/CyberRik/reach-asr"><img src="https://img.shields.io/github/last-commit/CyberRik/reach-asr?style=flat-square&label=reach-asr&labelColor=181717&color=3FCF8E" alt="reach-asr last commit" /></a>
 <a href="https://github.com/CyberRik/senpai"><img src="https://img.shields.io/github/last-commit/CyberRik/senpai?style=flat-square&label=senpai&labelColor=181717&color=555555" alt="senpai last commit" /></a>
 
-</sub>
-
 </div>
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:3FCF8E,45:16302a,100:0d1117&height=120&section=footer" alt="" />
