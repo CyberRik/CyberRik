@@ -1,0 +1,54 @@
+<svg width="854" height="372" viewBox="0 0 854 372" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Terminal: whoami, current projects, and an Ancora chaos run where a killed worker recovers">
+  <style>
+    .t { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 14.5px; fill: #c9d1d9; white-space: pre; }
+    .p { fill: #3FCF8E; font-weight: 600; }
+    .d { fill: #8b949e; }
+    .w { fill: #ffffff; font-weight: 600; }
+    .r { fill: #ff7b72; }
+    .y { fill: #e3b341; }
+    .g { fill: #3FCF8E; }
+    .b { fill: #79c0ff; }
+    .ln { opacity: 0; animation: show 0.05s linear forwards; }
+    @keyframes show { to { opacity: 1; } }
+    .cur { animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .bar { transform-origin: 0 0; transform: scaleX(0); animation: grow 1.6s ease-out forwards; animation-delay: 5.6s; }
+    @keyframes grow { to { transform: scaleX(1); } }
+  </style>
+
+  <!-- window -->
+  <rect x="1" y="1" width="852" height="370" rx="12" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
+  <path d="M1 13 a12 12 0 0 1 12 -12 h828 a12 12 0 0 1 12 12 v25 h-852 z" fill="#161b22"/>
+  <line x1="1" y1="38" x2="853" y2="38" stroke="#30363d"/>
+  <circle cx="24" cy="20" r="6" fill="#ff5f57"/>
+  <circle cx="44" cy="20" r="6" fill="#febc2e"/>
+  <circle cx="64" cy="20" r="6" fill="#28c840"/>
+  <text x="427" y="25" text-anchor="middle" class="t d" style="font-size:13px">rik@iitm: ~/ancora</text>
+
+  <!-- session -->
+  <text x="24" y="70" class="t ln" style="animation-delay:0.3s"><tspan class="p">rik@iitm</tspan><tspan class="d">:~$ </tspan>whoami</text>
+  <text x="24" y="92" class="t ln" style="animation-delay:0.9s"><tspan class="w">Ritankar Mondal</tspan><tspan class="d"> · </tspan>AI engineer<tspan class="d"> · </tspan>IIT Madras '27<tspan class="d"> · </tspan>ex-Otsuka, Tokyo</text>
+
+  <text x="24" y="124" class="t ln" style="animation-delay:1.6s"><tspan class="p">rik@iitm</tspan><tspan class="d">:~$ </tspan>cat now.txt</text>
+  <text x="24" y="146" class="t ln" style="animation-delay:2.2s"><tspan class="b">Ancora</tspan>    durable execution runtime for AI workflows</text>
+  <text x="24" y="168" class="t ln" style="animation-delay:2.4s"><tspan class="b">TinyServe</tspan> LLM inference scheduling, built from scratch</text>
+
+  <text x="24" y="200" class="t ln" style="animation-delay:3.2s"><tspan class="p">rik@iitm</tspan><tspan class="d">:~/ancora$ </tspan>./chaos --kill activity-worker --assert</text>
+  <text x="24" y="222" class="t ln" style="animation-delay:4.0s"><tspan class="r">✗ SIGKILL</tspan>  activity worker killed <tspan class="d">mid-flight, run in progress</tspan></text>
+  <text x="24" y="244" class="t ln" style="animation-delay:4.8s"><tspan class="y">↻ replay</tspan>   rebuilding state from the event log<tspan class="d"> ...</tspan></text>
+
+  <!-- progress bar -->
+  <g class="ln" style="animation-delay:5.4s">
+    <rect x="125" y="254" width="420" height="10" rx="5" fill="#21262d"/>
+    <rect class="bar" x="125" y="254" width="420" height="10" rx="5" fill="#3FCF8E"/>
+    <text x="560" y="264" class="t d" style="font-size:13px">kill detected in ~6s (was ~60s)</text>
+  </g>
+
+  <text x="24" y="290" class="t ln" style="animation-delay:7.4s"><tspan class="g">✓ no lost state</tspan><tspan class="d">   ·   </tspan><tspan class="g">✓ no re-executed activities</tspan><tspan class="d">   ·   </tspan><tspan class="g">✓ exactly-once</tspan></text>
+  <text x="24" y="312" class="t ln" style="animation-delay:8.0s"><tspan class="d">284 tests passed · mypy --strict clean · OpenSSF Best Practices: passing</tspan></text>
+
+  <g class="ln" style="animation-delay:8.8s">
+    <text x="24" y="344" class="t"><tspan class="p">rik@iitm</tspan><tspan class="d">:~/ancora$ </tspan></text>
+    <rect class="cur" x="183" y="332" width="9" height="16" fill="#3FCF8E"/>
+  </g>
+</svg>

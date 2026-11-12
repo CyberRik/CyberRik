@@ -14,6 +14,7 @@
   <a href="mailto:ritankarmondal123@gmail.com"><img src="https://img.shields.io/badge/Email-3FCF8E?style=for-the-badge&logo=gmail&logoColor=black" alt="Email" /></a>
   <a href="https://github.com/CyberRik?tab=repositories"><img src="https://img.shields.io/badge/Repositories-181717?style=for-the-badge&logo=github&logoColor=white" alt="Repositories" /></a>
   <a href="https://leetcode.com/u/Rik0411/"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode" /></a>
+  <img src="https://komarev.com/ghpvc/?username=CyberRik&style=for-the-badge&color=3FCF8E&label=PROFILE+VIEWS" alt="Profile views" />
 </p>
 
 <p align="center">
@@ -24,13 +25,9 @@
   <a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=python,cpp,ts,pytorch,fastapi,postgres,redis,docker,gcp,linux&theme=dark&perline=10" alt="Core stack" /></a>
 </p>
 
----
-
-<table>
-<tr>
-<td width="62%" valign="top">
-
-### About
+<p align="center">
+  <img width="100%" src="assets/terminal.svg" alt="Terminal: whoami, current projects, and an Ancora chaos run where a killed worker recovers and three invariants pass" />
+</p>
 
 I build LLM-powered applications, retrieval systems, and production backend infrastructure - tool-calling
 models, document intelligence, RAG pipelines, and the runtimes they execute on. Hands-on across the full
@@ -40,19 +37,12 @@ The through-line in most of my work is **verification** - a system that claims f
 test that asserts it, a model that cites a statistic should be structurally unable to invent one, and a
 benchmark is only worth the things it holds fixed.
 
-</td>
-<td width="38%" valign="top">
+**Currently** &nbsp;·&nbsp; building [Ancora](https://github.com/CyberRik/Ancora) and [TinyServe](https://github.com/CyberRik/tinyserve)<br/>
+**Previously** &nbsp;·&nbsp; AI/ML Engineer Intern at **Otsuka Corporation**, Tokyo<br/>
+**Upstream** &nbsp;·&nbsp; merged PRs in Docling, Feast and Meshery<br/>
+**Rule of thumb** &nbsp;·&nbsp; if a claim has no test behind it, it's a hypothesis
 
-### Right now
-
-- 🛠️ building **[Ancora](https://github.com/CyberRik/Ancora)** and **[TinyServe](https://github.com/CyberRik/tinyserve)**
-- 🗼 previously AI/ML Engineer Intern at **Otsuka Corporation**, Tokyo
-- 🧩 contributor to **Docling**, **Feast**, **Meshery**
-- 🎓 graduating **2027**
-
-</td>
-</tr>
-</table>
+---
 
 ## Open source
 
@@ -586,6 +576,13 @@ Qwen2.5-VL).
 <a href="https://github.com/CyberRik/portfolio"><img src="https://img.shields.io/github/last-commit/CyberRik/portfolio?style=flat-square&label=portfolio&labelColor=181717&color=3FCF8E" alt="portfolio last commit" /></a>
 <a href="https://github.com/CyberRik/reach-asr"><img src="https://img.shields.io/github/last-commit/CyberRik/reach-asr?style=flat-square&label=reach-asr&labelColor=181717&color=3FCF8E" alt="reach-asr last commit" /></a>
 <a href="https://github.com/CyberRik/senpai"><img src="https://img.shields.io/github/last-commit/CyberRik/senpai?style=flat-square&label=senpai&labelColor=181717&color=555555" alt="senpai last commit" /></a>
+
+<br/><br/>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/CyberRik/CyberRik/output/snake-dark.svg" />
+  <img width="100%" src="https://raw.githubusercontent.com/CyberRik/CyberRik/output/snake.svg" alt="Contribution graph being eaten by a snake" />
+</picture>
 
 </div>
 
