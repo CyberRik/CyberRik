@@ -62,7 +62,8 @@ benchmark is only worth the things it holds fixed.
   - merged: [docling#4601](https://github.com/docling-project/docling/pull/4601), HTML conversion no longer aborts when a link or image points outside the base directory
   - merged: [docling#4602](https://github.com/docling-project/docling/pull/4602), EPUB images with single-quoted or percent-escaped sources now resolve
   - merged: [docling-serve#721](https://github.com/docling-project/docling-serve/pull/721), `default_code_formula_preset` now points at a preset that exists
-  - open: [docling#4636](https://github.com/docling-project/docling/pull/4636) (EPUB image src query/fragment), [docling-core#854](https://github.com/docling-project/docling-core/pull/854) (chunker keeps a table caption in the same window as its table)
+  - merged: [docling#4636](https://github.com/docling-project/docling/pull/4636), EPUB image sources with a query string or fragment now resolve
+  - open: [docling-core#854](https://github.com/docling-project/docling-core/pull/854) (chunker keeps a table caption in the same window as its table), [docling-core#932](https://github.com/docling-project/docling-core/pull/932) (chunker only splits Markdown tables by columns)
 - **[Feast](https://github.com/feast-dev/feast)** (LF AI & Data)
   - merged: [feast#6985](https://github.com/feast-dev/feast/pull/6985), warm up the whole DynamoDB connection pool instead of a single connection
 - **[Meshery](https://github.com/meshery/meshery)** (CNCF)
