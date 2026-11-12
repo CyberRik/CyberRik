@@ -25,9 +25,13 @@
   <a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=python,cpp,ts,pytorch,fastapi,postgres,redis,docker,gcp,linux&theme=dark&perline=10" alt="Core stack" /></a>
 </p>
 
-<p align="center">
-  <img width="100%" src="assets/terminal.svg" alt="Terminal: whoami, current projects, and an Ancora chaos run where a killed worker recovers and three invariants pass" />
-</p>
+---
+
+<table>
+<tr>
+<td width="62%" valign="top">
+
+### About
 
 I build LLM-powered applications, retrieval systems, and production backend infrastructure - tool-calling
 models, document intelligence, RAG pipelines, and the runtimes they execute on. Hands-on across the full
@@ -37,10 +41,19 @@ The through-line in most of my work is **verification** - a system that claims f
 test that asserts it, a model that cites a statistic should be structurally unable to invent one, and a
 benchmark is only worth the things it holds fixed.
 
-**Currently** &nbsp;·&nbsp; building [Ancora](https://github.com/CyberRik/Ancora) and [TinyServe](https://github.com/CyberRik/tinyserve)<br/>
-**Previously** &nbsp;·&nbsp; AI/ML Engineer Intern at **Otsuka Corporation**, Tokyo<br/>
-**Upstream** &nbsp;·&nbsp; merged PRs in Docling, Feast and Meshery<br/>
-**Rule of thumb** &nbsp;·&nbsp; if a claim has no test behind it, it's a hypothesis
+</td>
+<td width="38%" valign="top">
+
+### Right now
+
+- 🛠️ building **[Ancora](https://github.com/CyberRik/Ancora)** and **[TinyServe](https://github.com/CyberRik/tinyserve)**
+- 🗼 previously AI/ML Engineer Intern at **Otsuka Corporation**, Tokyo
+- 🧩 contributor to **Docling**, **Feast**, **Meshery**
+- 🎓 graduating **2027**
+
+</td>
+</tr>
+</table>
 
 ---
 
