@@ -68,6 +68,8 @@ benchmark is only worth the things it holds fixed.
   - merged: [feast#6985](https://github.com/feast-dev/feast/pull/6985), warm up the whole DynamoDB connection pool instead of a single connection
 - **[Meshery](https://github.com/meshery/meshery)** (CNCF)
   - merged: [meshery#22574](https://github.com/meshery/meshery/pull/22574), Helm Snapshot docs now give a working install URL and current plugin commands
+  - merged: [meshery#23765](https://github.com/meshery/meshery/pull/23765), Docker Extension login and logout no longer hang without a websocket client, plus a send-on-closed-channel race fix and the auth token scrubbed from proxy logs
+  - open: [meshery#23780](https://github.com/meshery/meshery/pull/23780) (proxy crash on concurrent websocket writes), [meshery#23766](https://github.com/meshery/meshery/pull/23766) (Helm chart NOTES, test hook and env quoting), [meshery#23764](https://github.com/meshery/meshery/pull/23764) (dead adapter code in the Docker Extension)
 - **[Ancora](https://github.com/CyberRik/Ancora)** (my project): earned the OpenSSF Best Practices passing badge, with CodeQL, Dependabot, private vulnerability reporting and zero open security alerts <a href="https://www.bestpractices.dev/projects/15907"><img src="https://www.bestpractices.dev/projects/15907/badge" alt="OpenSSF Best Practices: passing" align="absmiddle" /></a>
 
 <p align="left">
