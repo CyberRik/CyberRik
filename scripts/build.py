@@ -1,4 +1,4 @@
-"""Regenerate the skyline header SVGs and the upstream-contributions list in README.md.
+"""Regenerate the profile card SVGs and the upstream-contributions list in README.md.
 
 Runs daily from .github/workflows/build.yml. Locally:
     GITHUB_TOKEN=$(gh auth token) python scripts/build.py
@@ -7,8 +7,6 @@ Standard library only.
 
 import html
 import json
-import math
-import random
 import os
 import re
 import urllib.request
@@ -35,7 +33,7 @@ query($q: String!) {
   }
   user(login: "%s") {
     repositories(ownerAffiliations: OWNER, privacy: PUBLIC) { totalCount }
-    contributionsCollection { contributionCalendar { totalContributions weeks { contributionDays { contributionCount } } } }
+    contributionsCollection { contributionCalendar { totalContributions } }
   }
 }
 """ % USER
@@ -100,107 +98,178 @@ def render_list(prs):
     return "\n".join(out).strip()
 
 
-# ---------------------------------------------------------------- header
+# ---------------------------------------------------------------- card
 
-# The header is a city drawn from the last WEEKS of the contribution calendar:
-# one building per day, height ~ sqrt(contributions). Static on first paint;
-# a few windows twinkle (off under prefers-reduced-motion).
-WEEKS = 26
-SANS = "-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif"
-MONO = "ui-monospace,SFMono-Regular,Menlo,Consolas,monospace"
+# An anchor, for Ancora and for durability. Rasterised once from a vector drawing
+# into shaded ASCII; kept as a constant so the workflow needs no image libraries.
+ART = r"""
+            :*##*:
+           -@@==@@=
+           =@@==@@=
+            :#@@#-
+      :++++++*@@*++++++-
+      -******#@@#******=
+             :@@:
+             :@@:
+             :@@:
+             :@@:
+             :@@:
+*#           :@@:           #*
+@@%:         :@@:         :%@@
+%%%@*-       :@@:       :*@%%%
+   -@@=      :@@:      -@@=
+    :%@#-    :@@:    -#@%:
+      -#@@*=--@@=-=*@@%=
+        .-*#@@@@@@#*=.
+             =@@=
+              ..
+""".strip("\n").split("\n")
 
 THEMES = {
-    "dark": dict(sky=("#0b0f17", "#0d1a17"), fg="#f0f6fc", dim="#8b949e", accent="#3FCF8E",
-                 tops=("#1a2420", "#1d6b4b", "#27a06b", "#3FCF8E", "#8ff0c4"), kl=.58, kr=.38,
-                 ground="#121a17", window="#ffd57e", glow="#3FCF8E", glow_op=.22, stars=True, border="#30363d"),
-    "light": dict(sky=("#ffffff", "#eaf6f0"), fg="#1f2328", dim="#59636e", accent="#1a7f5a",
-                  tops=("#e3e9e6", "#9be9a8", "#40c463", "#30a14e", "#216e39"), kl=.82, kr=.66,
-                  ground="#e8eeeb", window="#ffffff", glow="#40c463", glow_op=.18, stars=False, border="#d0d7de"),
+    "dark": dict(bg="#0d1117", border="#30363d", fg="#e6edf3", dim="#6e7681", key="#3FCF8E",
+                 art=("#a7f3d0", "#3FCF8E", "#14845a"),
+                 blocks=("#0f3d2c", "#14845a", "#26a269", "#3FCF8E", "#7ee2b8", "#c9f5e0")),
+    "light": dict(bg="#ffffff", border="#d0d7de", fg="#1f2328", dim="#8c959f", key="#1a7f5a",
+                  art=("#26a269", "#1a7f5a", "#0b4a33"),
+                  blocks=("#0b4a33", "#14845a", "#1a7f5a", "#26a269", "#3FCF8E", "#a7f3d0")),
 }
+KEY_W = 15
+FONT = "ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace"
+PROMPT = "ritankar@mondal:~$ "
+COMMAND = "neofetch"
 
 
-def shade(h, k):
-    r, g, b = (int(h[i:i + 2], 16) for i in (1, 3, 5))
-    return "#%02x%02x%02x" % (int(r * k), int(g * k), int(b * k))
+def card_lines(prs, data):
+    merged = [p for p in prs if p["merged"]]
+    review = [p for p in prs if not p["merged"]]
+    orgs = {p["repository"]["owner"]["login"] for p in merged}
+    names = [ORGS.get(o, (o,))[0] for o in ORGS if o in orgs]
+    contrib = data["user"]["contributionsCollection"]["contributionCalendar"]["totalContributions"]
+    repos = data["user"]["repositories"]["totalCount"]
+    return [
+        ("title", "ritankar", "mondal"),
+        ("rule", 15),
+        ("kv", "Role", "AI engineer · LLM systems, retrieval, infra"),
+        ("kv", "Education", "B.Tech, IIT Madras · class of 2027"),
+        ("kv", "Previously", "Otsuka (Tokyo) · Gravton Labs · OctonData"),
+        ("kv", "Building", "Ancora · TinyServe"),
+        ("kv", "Upstream", " · ".join(names)),
+        ("kv", "Languages", "Python · C++ · TypeScript"),
+        ("kv", "Tools", "PyTorch · Temporal · Ray · FastAPI · OTel"),
+        ("gap",),
+        ("kv2", "Merged PRs", f"{len(merged)} upstream", "In review", str(len(review))),
+        ("kv2", "Contributions", f"{contrib:,} / year", "Repos", str(repos)),
+        ("gap",),
+        ("kv", "Web", "ritankar-mondal.vercel.app"),
+        ("kv", "Email", "ritankarmondal123@gmail.com"),
+        ("gap",),
+        ("blocks",),
+    ]
 
 
-def render_header(weeks, theme):
+def leader(key, width=KEY_W):
+    return " " + "." * max(2, width - len(key) - 1) + " "
+
+
+def mix(a, b, t):
+    pa = [int(a[i:i + 2], 16) for i in (1, 3, 5)]
+    pb = [int(b[i:i + 2], 16) for i in (1, 3, 5)]
+    return "#" + "".join(f"{round(x + (y - x) * t):02x}" for x, y in zip(pa, pb))
+
+
+def gradient(stops, t):
+    if t <= 0.5:
+        return mix(stops[0], stops[1], t * 2)
+    return mix(stops[1], stops[2], (t - 0.5) * 2)
+
+
+def render_card(lines, theme):
     c = THEMES[theme]
-    rnd = random.Random(11)
-    W, H = 900, 320
-    total = sum(sum(w) for w in weeks)
-    mx = max(max(w) for w in weeks) or 1
-    s = 10.5                     # half-width of a cell's top face
-    ox, oy = 560, 128            # screen position of week 0, day 0
-    parts, twinkles = [], []
+    e = html.escape
+    pad, fs, cw, w = 32, 14, 8.4, 850
+    lh, art_lh = 22, 18
+    t0 = 0.45  # seconds: output starts once the command is typed; whole card in under 1s
+    rows = []
 
-    def lvl(n):
-        if not n:
-            return 0
-        q = n / mx
-        return 1 if q < .15 else 2 if q < .35 else 3 if q < .6 else 4
+    def reveal(i, step=0.025):
+        return f' class="r" style="animation-delay:{t0 + i * step:.2f}s"'
 
-    cells = sorted(((wi + di, wi, di, n) for wi, w in enumerate(weeks) for di, n in enumerate(w)))
-    for _, wi, di, n in cells:
-        x = ox + (wi - di) * s
-        y = oy + (wi + di) * s * .5
-        h = 2.5 + (math.sqrt(n / mx) * 118 if n else 0)
-        top = c["tops"][lvl(n)]
-        L, R = shade(top, c["kl"]), shade(top, c["kr"])
-        parts.append(f'<path d="M{x:.1f} {y-h:.1f}l{s:.1f} {s/2:.1f}l{-s:.1f} {s/2:.1f}l{-s:.1f} {-s/2:.1f}z" fill="{top}"/>'
-                     f'<path d="M{x-s:.1f} {y-h+s/2:.1f}l{s:.1f} {s/2:.1f}v{h:.1f}l{-s:.1f} {-s/2:.1f}z" fill="{L}"/>'
-                     f'<path d="M{x:.1f} {y-h+s:.1f}l{s:.1f} {-s/2:.1f}v{h:.1f}l{-s:.1f} {s/2:.1f}z" fill="{R}"/>')
-        # windows: two columns per face, rows every 7px
-        if h > 16:
-            for face in (-1, 1):
-                for col in (.28, .64):
-                    for k in range(int((h - 8) // 7)):
-                        if rnd.random() > .42:
-                            continue
-                        u = col * s
-                        wx = x + face * u
-                        wy = y - h + s + 4 + k * 7 - (u / 2 if face == 1 else -u / 2) + (0 if face == 1 else -s / 2)
-                        if face == -1:
-                            wy = y - h + s / 2 + 4 + k * 7 + (s - u) / 2
-                            wx = x - s + (s - u)
-                        d = f'M{wx:.1f} {wy:.1f}l{face*1.9:.1f} {-0.95 if face == 1 else 0.95:.2f}v2.4l{-face*1.9:.1f} {0.95 if face == 1 else -0.95:.2f}z'
-                        if rnd.random() < .12:
-                            twinkles.append(f'<path class="tw" style="animation-delay:-{rnd.uniform(0, 6):.1f}s" d="{d}" fill="{c["window"]}"/>')
-                        else:
-                            parts.append(f'<path d="{d}" fill="{c["window"]}" opacity="{rnd.uniform(.55, .95):.2f}"/>')
+    # prompt + typed command, one keystroke at a time
+    py = pad + 14
+    keys = "".join(f'<tspan class="k" style="animation-delay:{0.08 + i * 0.04:.2f}s">{ch}</tspan>'
+                   for i, ch in enumerate(COMMAND))
+    rows.append(f'<text x="{pad}" y="{py}"><tspan fill="{c["key"]}">{e(PROMPT)}</tspan>'
+                f'<tspan fill="{c["fg"]}">{keys}</tspan></text>')
 
-    stars = ""
-    if c["stars"]:
-        stars = "".join(f'<circle cx="{rnd.uniform(420, 890):.0f}" cy="{rnd.uniform(12, 150):.0f}" r="{rnd.choice((.6, .8, 1.1))}" '
-                        f'fill="#c9d1d9" opacity="{rnd.uniform(.2, .65):.2f}"/>' for _ in range(46))
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Ritankar Mondal, AI engineer. The skyline is built from GitHub contributions over the past six months.">
+    # art
+    top = py + 34
+    for i, line in enumerate(ART):
+        col = gradient(c["art"], i / (len(ART) - 1))
+        rows.append(f'<text x="{pad}" y="{top + i * art_lh}" fill="{col}"{reveal(i, 0.012)}>{e(line)}</text>')
+    art_bottom = top + (len(ART) - 1) * art_lh
+
+    # info
+    x = pad + 33 * cw
+    y = top
+    n = 0
+    for ln in lines:
+        kind = ln[0]
+        if kind == "gap":
+            y += lh // 2
+            continue
+        r = reveal(n)
+        n += 1
+        if kind == "title":
+            rows.append(f'<text x="{x}" y="{y}"{r} font-weight="700"><tspan fill="{c["key"]}">{e(ln[1])}</tspan>'
+                        f'<tspan fill="{c["fg"]}">@</tspan><tspan fill="{c["key"]}">{e(ln[2])}</tspan></text>')
+        elif kind == "rule":
+            rows.append(f'<text x="{x}" y="{y}" fill="{c["dim"]}"{r}>{"─" * ln[1]}</text>')
+        elif kind == "kv":
+            _, k, v = ln
+            rows.append(f'<text x="{x}" y="{y}"{r}><tspan fill="{c["key"]}">{e(k)}</tspan>'
+                        f'<tspan fill="{c["dim"]}">{leader(k)}</tspan><tspan fill="{c["fg"]}">{e(v)}</tspan></text>')
+        elif kind == "kv2":
+            _, k, v, k2, v2 = ln
+            left = f"{k}{leader(k)}{v}"
+            gap = " " * max(2, 34 - len(left))
+            rows.append(f'<text x="{x}" y="{y}"{r}><tspan fill="{c["key"]}">{e(k)}</tspan>'
+                        f'<tspan fill="{c["dim"]}">{leader(k)}</tspan><tspan fill="{c["fg"]}">{e(v)}{gap}</tspan>'
+                        f'<tspan fill="{c["key"]}">{e(k2)}</tspan><tspan fill="{c["dim"]}">{leader(k2, 11)}</tspan>'
+                        f'<tspan fill="{c["fg"]}">{e(v2)}</tspan></text>')
+        elif kind == "blocks":
+            sq = 24
+            blocks = "".join(f'<rect x="{x + i * (sq + 4):.1f}" y="{y - 13}" width="{sq}" height="16" rx="2" fill="{col}"/>'
+                             for i, col in enumerate(c["blocks"]))
+            rows.append(f'<g{r}>{blocks}</g>')
+        y += lh
+
+    # closing prompt with a blinking cursor
+    end_y = max(y - lh, art_bottom) + 40
+    done = t0 + n * 0.025 + 0.1
+    rows.append(f'<text x="{pad}" y="{end_y}" class="r" style="animation-delay:{done:.2f}s">'
+                f'<tspan fill="{c["key"]}">{e(PROMPT)}</tspan></text>')
+    rows.append(f'<text x="{pad}" y="{end_y}" class="cursor" style="animation-delay:{done:.2f}s,{done:.2f}s">'
+                f'<tspan fill="none">{e(PROMPT)}</tspan><tspan fill="{c["key"]}">█</tspan></text>')
+
+    h = end_y + pad - 6
+    body = "\n  ".join(rows)
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="Ritankar Mondal: AI engineer working on LLM systems, retrieval and infrastructure">
   <style>
-    .tw {{ animation: tw 6s ease-in-out infinite; }}
-    @keyframes tw {{ 0%, 100% {{ opacity: .95; }} 45% {{ opacity: .15; }} 55% {{ opacity: .15; }} }}
-    @media (prefers-reduced-motion: reduce) {{ .tw {{ animation: none; }} }}
+    text {{ white-space: pre; }}
+    .r {{ opacity: 0; animation: in .2s ease-out forwards; }}
+    .k {{ fill-opacity: 0; animation: key 0s forwards; }}
+    .cursor {{ opacity: 0; animation: in 0s forwards, blink 1.1s step-end infinite; }}
+    @keyframes in {{ to {{ opacity: 1; }} }}
+    @keyframes key {{ to {{ fill-opacity: 1; }} }}
+    @keyframes blink {{ 50% {{ opacity: 0; }} }}
+    @media (prefers-reduced-motion: reduce) {{
+      .r, .cursor {{ animation: none; opacity: 1; }}
+      .k {{ animation: none; fill-opacity: 1; }}
+    }}
   </style>
-  <defs>
-    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{c['sky'][0]}"/><stop offset="1" stop-color="{c['sky'][1]}"/></linearGradient>
-    <radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="{c['glow']}" stop-opacity="{c['glow_op']}"/><stop offset="1" stop-color="{c['glow']}" stop-opacity="0"/></radialGradient>
-    <clipPath id="card"><rect width="{W}" height="{H}" rx="14"/></clipPath>
-  </defs>
-  <g clip-path="url(#card)">
-    <rect width="{W}" height="{H}" fill="url(#sky)"/>
-    {stars}
-    <ellipse cx="690" cy="215" rx="260" ry="120" fill="url(#glow)"/>
-    {''.join(parts)}
-    {''.join(twinkles)}
-  </g>
-  <rect x=".5" y=".5" width="{W - 1}" height="{H - 1}" rx="14" fill="none" stroke="{c['border']}"/>
-  <g font-family="{SANS}">
-    <text x="44" y="70" font-size="12" font-weight="600" letter-spacing="2.4" fill="{c['accent']}">AI ENGINEER</text>
-    <text x="44" y="114" font-size="40" font-weight="700" letter-spacing="-.6" fill="{c['fg']}">Ritankar Mondal</text>
-    <text x="44" y="148" font-size="16" fill="{c['dim']}">LLM systems, retrieval, and the</text>
-    <text x="44" y="170" font-size="16" fill="{c['dim']}">runtimes under them.</text>
-  </g>
-  <g font-family="{MONO}" font-size="12" fill="{c['dim']}">
-    <text x="44" y="262">IIT Madras · ex-Otsuka, Tokyo</text>
-    <text x="44" y="282"><tspan fill="{c['accent']}">{total:,}</tspan> contributions in 26 weeks, as a skyline</text>
+  <rect x="0.5" y="0.5" width="{w - 1}" height="{h - 1}" rx="12" fill="{c["bg"]}" stroke="{c["border"]}"/>
+  <g font-family="{FONT}" font-size="{fs}">
+  {body}
   </g>
 </svg>
 """
@@ -209,10 +278,9 @@ def render_header(weeks, theme):
 def main():
     data = fetch()
     prs = upstream_prs(data)
-    cal = data["user"]["contributionsCollection"]["contributionCalendar"]
-    weeks = [[d["contributionCount"] for d in w["contributionDays"]] for w in cal["weeks"]][-WEEKS:]
+    lines = card_lines(prs, data)
     for theme in THEMES:
-        (ROOT / "assets" / f"header-{theme}.svg").write_text(render_header(weeks, theme), encoding="utf-8", newline="\n")
+        (ROOT / "assets" / f"card-{theme}.svg").write_text(render_card(lines, theme), encoding="utf-8", newline="\n")
 
     readme = ROOT / "README.md"
     text = readme.read_text(encoding="utf-8")
