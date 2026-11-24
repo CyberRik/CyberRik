@@ -6,8 +6,22 @@
 </a>
 
 <p align="center">
-  <img height="40" src="https://skillicons.dev/icons?i=python,cpp,ts,pytorch,fastapi,postgres,redis,docker,gcp,linux,prometheus,nextjs&theme=dark&perline=12" alt="Python, C++, TypeScript, PyTorch, FastAPI, PostgreSQL, Redis, Docker, GCP, Linux, Prometheus, Next.js" />
+  <img width="600" src="https://skillicons.dev/icons?i=python,cpp,ts,js,bash,git,pytorch,sklearn,opencv,fastapi,postgres,redis,supabase,docker,gcp,azure,linux,githubactions,prometheus,grafana,vercel,nextjs,react,threejs&theme=dark&perline=12" alt="Python, C++, TypeScript, JavaScript, Bash, Git, PyTorch, scikit-learn, OpenCV, FastAPI, PostgreSQL, Redis, Supabase, Docker, GCP, Azure, Linux, GitHub Actions, Prometheus, Grafana, Vercel, Next.js, React, Three.js" />
 </p>
+
+<details>
+<summary align="center"><sub>Full stack, by area</sub></summary>
+<br/>
+<table>
+<tr><td><b>LLMs &amp; training</b></td><td>Transformers · QLoRA / LoRA / PEFT · instruction tuning · tool &amp; function calling · vLLM · llama.cpp</td></tr>
+<tr><td><b>Retrieval</b></td><td>LangChain · FAISS · ChromaDB · GraphRAG · hybrid retrieval &amp; reranking · multimodal document AI</td></tr>
+<tr><td><b>Speech &amp; vision</b></td><td>Whisper · NVIDIA NeMo · pyannote · YOLOv10 · PaddleOCR · Table Transformer · ONNX Runtime</td></tr>
+<tr><td><b>Pipelines</b></td><td>Temporal · Ray · Airflow · n8n · Apify · Pandas · AsyncIO</td></tr>
+<tr><td><b>Infra</b></td><td>Modal · Railway · NVIDIA DGX Spark</td></tr>
+<tr><td><b>Observability</b></td><td>OpenTelemetry · Jaeger · py-spy</td></tr>
+</table>
+
+</details>
 
 <p align="center"><sub><a href="https://ritankar-mondal.vercel.app/">Portfolio</a> &nbsp;·&nbsp; <a href="mailto:ritankarmondal123@gmail.com">Email</a> &nbsp;·&nbsp; <a href="notes.md">Engineering notes</a></sub></p>
 
