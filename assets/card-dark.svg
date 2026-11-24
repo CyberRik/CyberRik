@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="488" viewBox="0 0 850 488" role="img" aria-label="Ritankar Mondal: AI engineer working on LLM systems, retrieval and infrastructure">
+  <style>
+    text { white-space: pre; }
+    .r { opacity: 0; animation: in .35s ease-out forwards; }
+    .k { fill-opacity: 0; animation: key 0s forwards; }
+    .cursor { opacity: 0; animation: in 0s forwards, blink 1.1s step-end infinite; }
+    @keyframes in { to { opacity: 1; } }
+    @keyframes key { to { fill-opacity: 1; } }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      .r, .cursor { animation: none; opacity: 1; }
+      .k { animation: none; fill-opacity: 1; }
+    }
+  </style>
+  <rect x="0.5" y="0.5" width="849" height="487" rx="12" fill="#0d1117" stroke="#30363d"/>
+  <g font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="14">
+  <text x="32" y="46"><tspan fill="#3FCF8E">ritankar@mondal:~$ </tspan><tspan fill="#e6edf3"><tspan class="k" style="animation-delay:0.30s">n</tspan><tspan class="k" style="animation-delay:0.39s">e</tspan><tspan class="k" style="animation-delay:0.48s">o</tspan><tspan class="k" style="animation-delay:0.57s">f</tspan><tspan class="k" style="animation-delay:0.66s">e</tspan><tspan class="k" style="animation-delay:0.75s">t</tspan><tspan class="k" style="animation-delay:0.84s">c</tspan><tspan class="k" style="animation-delay:0.93s">h</tspan></tspan></text>
+  <text x="32" y="80" fill="#a7f3d0" class="r" style="animation-delay:1.10s">            :*##*:</text>
+  <text x="32" y="98" fill="#9cefc9" class="r" style="animation-delay:1.13s">           -@@==@@=</text>
+  <text x="32" y="116" fill="#91ebc2" class="r" style="animation-delay:1.16s">           =@@==@@=</text>
+  <text x="32" y="134" fill="#86e8bb" class="r" style="animation-delay:1.19s">            :#@@#-</text>
+  <text x="32" y="152" fill="#7be4b4" class="r" style="animation-delay:1.22s">      :++++++*@@*++++++-</text>
+  <text x="32" y="170" fill="#70e0ad" class="r" style="animation-delay:1.25s">      -******#@@#******=</text>
+  <text x="32" y="188" fill="#65dca6" class="r" style="animation-delay:1.28s">             :@@:</text>
+  <text x="32" y="206" fill="#5ad89f" class="r" style="animation-delay:1.31s">             :@@:</text>
+  <text x="32" y="224" fill="#4fd598" class="r" style="animation-delay:1.34s">             :@@:</text>
+  <text x="32" y="242" fill="#44d191" class="r" style="animation-delay:1.37s">             :@@:</text>
+  <text x="32" y="260" fill="#3dcb8b" class="r" style="animation-delay:1.40s">             :@@:</text>
+  <text x="32" y="278" fill="#38c386" class="r" style="animation-delay:1.43s">*#           :@@:           #*</text>
+  <text x="32" y="296" fill="#34bb80" class="r" style="animation-delay:1.46s">@@%:         :@@:         :%@@</text>
+  <text x="32" y="314" fill="#2fb37b" class="r" style="animation-delay:1.49s">%%%@*-       :@@:       :*@%%%</text>
+  <text x="32" y="332" fill="#2bab75" class="r" style="animation-delay:1.52s">   -@@=      :@@:      -@@=</text>
+  <text x="32" y="350" fill="#26a470" class="r" style="animation-delay:1.55s">    :%@#-    :@@:    -#@%:</text>
+  <text x="32" y="368" fill="#229c6a" class="r" style="animation-delay:1.58s">      -#@@*=--@@=-=*@@%=</text>
+  <text x="32" y="386" fill="#1d9465" class="r" style="animation-delay:1.61s">        .-*#@@@@@@#*=.</text>
+  <text x="32" y="404" fill="#198c5f" class="r" style="animation-delay:1.64s">             =@@=</text>
+  <text x="32" y="422" fill="#14845a" class="r" style="animation-delay:1.67s">              ..</text>
+  <text x="309.2" y="80" class="r" style="animation-delay:1.10s" font-weight="700"><tspan fill="#3FCF8E">ritankar</tspan><tspan fill="#e6edf3">@</tspan><tspan fill="#3FCF8E">mondal</tspan></text>
+  <text x="309.2" y="102" fill="#6e7681" class="r" style="animation-delay:1.16s">───────────────</text>
+  <text x="309.2" y="124" class="r" style="animation-delay:1.21s"><tspan fill="#3FCF8E">Role</tspan><tspan fill="#6e7681"> .......... </tspan><tspan fill="#e6edf3">AI engineer · LLM systems, retrieval, infra</tspan></text>
+  <text x="309.2" y="146" class="r" style="animation-delay:1.27s"><tspan fill="#3FCF8E">Education</tspan><tspan fill="#6e7681"> ..... </tspan><tspan fill="#e6edf3">B.Tech, IIT Madras · class of 2027</tspan></text>
+  <text x="309.2" y="168" class="r" style="animation-delay:1.32s"><tspan fill="#3FCF8E">Previously</tspan><tspan fill="#6e7681"> .... </tspan><tspan fill="#e6edf3">Otsuka (Tokyo) · Gravton Labs · OctonData</tspan></text>
+  <text x="309.2" y="190" class="r" style="animation-delay:1.38s"><tspan fill="#3FCF8E">Building</tspan><tspan fill="#6e7681"> ...... </tspan><tspan fill="#e6edf3">Ancora · TinyServe</tspan></text>
+  <text x="309.2" y="212" class="r" style="animation-delay:1.43s"><tspan fill="#3FCF8E">Upstream</tspan><tspan fill="#6e7681"> ...... </tspan><tspan fill="#e6edf3">Docling · Feast · Meshery</tspan></text>
+  <text x="309.2" y="234" class="r" style="animation-delay:1.49s"><tspan fill="#3FCF8E">Languages</tspan><tspan fill="#6e7681"> ..... </tspan><tspan fill="#e6edf3">Python · C++ · TypeScript</tspan></text>
+  <text x="309.2" y="256" class="r" style="animation-delay:1.54s"><tspan fill="#3FCF8E">Tools</tspan><tspan fill="#6e7681"> ......... </tspan><tspan fill="#e6edf3">PyTorch · Temporal · Ray · FastAPI · OTel</tspan></text>
+  <text x="309.2" y="289" class="r" style="animation-delay:1.60s"><tspan fill="#3FCF8E">Merged PRs</tspan><tspan fill="#6e7681"> .... </tspan><tspan fill="#e6edf3">7 upstream        </tspan><tspan fill="#3FCF8E">In review</tspan><tspan fill="#6e7681"> .. </tspan><tspan fill="#e6edf3">5</tspan></text>
+  <text x="309.2" y="311" class="r" style="animation-delay:1.65s"><tspan fill="#3FCF8E">Contributions</tspan><tspan fill="#6e7681"> .. </tspan><tspan fill="#e6edf3">856 / year       </tspan><tspan fill="#3FCF8E">Repos</tspan><tspan fill="#6e7681"> ..... </tspan><tspan fill="#e6edf3">34</tspan></text>
+  <text x="309.2" y="344" class="r" style="animation-delay:1.71s"><tspan fill="#3FCF8E">Web</tspan><tspan fill="#6e7681"> ........... </tspan><tspan fill="#e6edf3">ritankar-mondal.vercel.app</tspan></text>
+  <text x="309.2" y="366" class="r" style="animation-delay:1.76s"><tspan fill="#3FCF8E">Email</tspan><tspan fill="#6e7681"> ......... </tspan><tspan fill="#e6edf3">ritankarmondal123@gmail.com</tspan></text>
+  <g class="r" style="animation-delay:1.81s"><rect x="309.2" y="386" width="24" height="16" rx="2" fill="#0f3d2c"/><rect x="337.2" y="386" width="24" height="16" rx="2" fill="#14845a"/><rect x="365.2" y="386" width="24" height="16" rx="2" fill="#26a269"/><rect x="393.2" y="386" width="24" height="16" rx="2" fill="#3FCF8E"/><rect x="421.2" y="386" width="24" height="16" rx="2" fill="#7ee2b8"/><rect x="449.2" y="386" width="24" height="16" rx="2" fill="#c9f5e0"/></g>
+  <text x="32" y="462" class="r" style="animation-delay:2.07s"><tspan fill="#3FCF8E">ritankar@mondal:~$ </tspan></text>
+  <text x="32" y="462" class="cursor" style="animation-delay:2.07s,2.07s"><tspan fill="none">ritankar@mondal:~$ </tspan><tspan fill="#3FCF8E">█</tspan></text>
+  </g>
+</svg>

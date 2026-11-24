@@ -1,603 +1,66 @@
-<!-- header -->
-<p align="center">
-  <img width="100%" src="assets/header.svg" alt="Ritankar Mondal, AI Engineer" />
-</p>
+<a href="https://ritankar-mondal.vercel.app/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/card-dark.svg" />
+    <img width="100%" src="assets/card-light.svg" alt="Ritankar Mondal. AI engineer working on LLM systems, retrieval and the runtimes under them. B.Tech at IIT Madras, previously at Otsuka Corporation in Tokyo." />
+  </picture>
+</a>
 
-<p align="center">
-  <a href="https://github.com/CyberRik">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=17&pause=1400&color=3FCF8E&center=true&vCenter=true&width=640&lines=Durable+execution+runtimes+for+AI+workflows;LLM+inference+scheduling%2C+built+from+scratch;Tool-calling+models+%E2%80%94+86.6%25+on+BFCL+v4;A+claim+is+only+as+good+as+the+test+behind+it" alt="Typing summary" />
-  </a>
-</p>
+<p align="right"><sub><a href="https://ritankar-mondal.vercel.app/">Portfolio</a> &nbsp;·&nbsp; <a href="mailto:ritankarmondal123@gmail.com">Email</a> &nbsp;·&nbsp; <a href="notes.md">Engineering notes</a></sub></p>
 
-<p align="center">
-  <a href="https://ritankar-mondal.vercel.app/"><img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
-  <a href="mailto:ritankarmondal123@gmail.com"><img src="https://img.shields.io/badge/Email-3FCF8E?style=for-the-badge&logo=gmail&logoColor=black" alt="Email" /></a>
-  <a href="https://github.com/CyberRik?tab=repositories"><img src="https://img.shields.io/badge/Repositories-181717?style=for-the-badge&logo=github&logoColor=white" alt="Repositories" /></a>
-  <img src="https://komarev.com/ghpvc/?username=CyberRik&style=for-the-badge&color=3FCF8E&label=PROFILE+VIEWS" alt="Profile views" />
-</p>
+I build LLM applications, retrieval systems and the backend infrastructure they run on: tool-calling
+models, document intelligence, RAG pipelines, and execution runtimes. I work across the whole loop, from
+data curation and training to evaluation and deployment.
 
-<p align="center">
-  <sub>B.Tech Chemical Engineering, <b>IIT Madras</b> (2023–2027) &nbsp;·&nbsp; Chennai, India &nbsp;·&nbsp; ex-<b>Otsuka Corporation</b>, Tokyo</sub>
-</p>
+Most of my work comes back to **verification**. A system that claims fault tolerance should have a test that
+asserts it. A model that cites a statistic should be structurally unable to invent one. A benchmark is only
+worth the things it holds fixed.
 
-<p align="center">
-  <a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=python,cpp,ts,pytorch,fastapi,postgres,redis,docker,gcp,linux&theme=dark&perline=10" alt="Core stack" /></a>
-</p>
+## Selected work
 
----
+- **[Ancora](https://github.com/CyberRik/Ancora)**: a durable execution runtime for AI workflows, on Temporal and Ray. Worker-kill detection went from ~60s to ~6s, and its chaos tests assert no lost state and exactly-once effects. Holds the [OpenSSF Best Practices](https://www.bestpractices.dev/projects/15907) passing badge. [Demo ↗](https://youtu.be/UVKmMZnP50A)
+- **[TinyServe](https://github.com/CyberRik/tinyserve)**: an LLM inference runtime built from scratch on llama.cpp, with continuous batching, KV-cache admission control and pluggable fair scheduling. Weighted fair queueing holds unfairness to 2.54×, against 3.87× under strict priority. [Demo ↗](https://youtu.be/ruPoUDw6xg4)
+- **[tool-calling-bfcl](https://github.com/CyberRik/tool-calling-bfcl)**: QLoRA fine-tuning of Qwen3-8B for function calling at Otsuka. It scores 86.6% across 8 BFCL v4 categories and 97.0% on `simple_python`.
+- **[senpai](https://github.com/CyberRik/senpai)**: a sales copilot that checks every number it writes against a whitelist of real figures. It runs at ~70 tok/s on a single MoE model, up from ~10.
+- **[indic-speaker-asr](https://github.com/CyberRik/indic-speaker-asr)**: diarization and ASR over 12 hours of multi-speaker audio in 9 Indic scripts. A decoding fix alone took WER from 93.66 to 78.82.
+- **[reach-asr](https://github.com/CyberRik/reach-asr)**: Whisper LoRA for telephone-band audio. WER fell from 23.76% to 21.20% (95% CI), and the cost on clean audio was measured rather than assumed.
 
-<table>
-<tr>
-<td width="62%" valign="top">
-
-### About
-
-I build LLM-powered applications, retrieval systems, and production backend infrastructure - tool-calling
-models, document intelligence, RAG pipelines, and the runtimes they execute on. Hands-on across the full
-loop: data curation, training, evaluation, and deployment.
-
-The through-line in most of my work is **verification** - a system that claims fault tolerance should have a
-test that asserts it, a model that cites a statistic should be structurally unable to invent one, and a
-benchmark is only worth the things it holds fixed.
-
-</td>
-<td width="38%" valign="top">
-
-### Right now
-
-- 🛠️ building **[Ancora](https://github.com/CyberRik/Ancora)** and **[TinyServe](https://github.com/CyberRik/tinyserve)**
-- 🗼 previously AI/ML Engineer Intern at **Otsuka Corporation**, Tokyo
-- 🧩 contributor to **Docling**, **Feast**, **Meshery**
-- 🎓 graduating **2027**
-
-</td>
-</tr>
-</table>
-
----
+How each one was built, including what failed first: **[notes.md](notes.md)**.
 
 ## Open source
 
-- **[Docling](https://github.com/docling-project)** (LF AI & Data)
-  - merged: [docling#4601](https://github.com/docling-project/docling/pull/4601), HTML conversion no longer aborts when a link or image points outside the base directory
-  - merged: [docling#4602](https://github.com/docling-project/docling/pull/4602), EPUB images with single-quoted or percent-escaped sources now resolve
-  - merged: [docling-serve#721](https://github.com/docling-project/docling-serve/pull/721), `default_code_formula_preset` now points at a preset that exists
-  - merged: [docling#4636](https://github.com/docling-project/docling/pull/4636), EPUB image sources with a query string or fragment now resolve
-  - open: [docling-core#854](https://github.com/docling-project/docling-core/pull/854) (chunker keeps a table caption in the same window as its table), [docling-core#932](https://github.com/docling-project/docling-core/pull/932) (chunker only splits Markdown tables by columns)
-- **[Feast](https://github.com/feast-dev/feast)** (LF AI & Data)
-  - merged: [feast#6985](https://github.com/feast-dev/feast/pull/6985), warm up the whole DynamoDB connection pool instead of a single connection
-- **[Meshery](https://github.com/meshery/meshery)** (CNCF)
-  - merged: [meshery#22574](https://github.com/meshery/meshery/pull/22574), Helm Snapshot docs now give a working install URL and current plugin commands
-  - merged: [meshery#23765](https://github.com/meshery/meshery/pull/23765), Docker Extension login and logout no longer hang without a websocket client, plus a send-on-closed-channel race fix and the auth token scrubbed from proxy logs
-  - open: [meshery#23780](https://github.com/meshery/meshery/pull/23780) (proxy crash on concurrent websocket writes), [meshery#23766](https://github.com/meshery/meshery/pull/23766) (Helm chart NOTES, test hook and env quoting), [meshery#23764](https://github.com/meshery/meshery/pull/23764) (dead adapter code in the Docker Extension)
-- **[Ancora](https://github.com/CyberRik/Ancora)** (my project): earned the OpenSSF Best Practices passing badge, with CodeQL, Dependabot, private vulnerability reporting and zero open security alerts <a href="https://www.bestpractices.dev/projects/15907"><img src="https://www.bestpractices.dev/projects/15907/badge" alt="OpenSSF Best Practices: passing" align="absmiddle" /></a>
-
-<p align="left">
-  <a href="https://www.bestpractices.dev/projects/15907"><img height="180" align="middle" src="https://raw.githubusercontent.com/CyberRik/CyberRik/main/assets/openssf-best-practices.png" alt="OpenSSF Best Practices badge (Ancora, passing)" /></a>
-  &nbsp;&nbsp;&nbsp;
-  <a href="https://cloud.layer5.io/user/e5bf077c-7dc5-4d14-8f42-d99e4f83417d?tab=badges&badge=first-design"><img height="212" align="middle" src="https://badges.layer5.io/assets/badges/first-design/first-design.png" alt="Layer5 First Design badge" /></a>
-</p>
-
----
-
-> Each project below opens - the summary is the claim, the dropdown is how it was earned.
-
----
-
-## At a glance
-
-<table>
-<tr>
-<td width="33%" valign="top">
-<a href="https://github.com/CyberRik/Ancora"><b>⚓ Ancora</b></a><br/>
-<sub>Durable execution runtime for AI workflows</sub><br/><br/>
-<code>~60s → ~6s</code> kill detection<br/>
-<code>284</code> tests · OpenSSF passing
-</td>
-<td width="33%" valign="top">
-<a href="https://github.com/CyberRik/tinyserve"><b>⚡ TinyServe</b></a><br/>
-<sub>From-scratch LLM inference runtime</sub><br/><br/>
-<code>97.2%</code> wall time in <code>llama_decode()</code><br/>
-WFQ unfairness <code>2.54×</code> vs <code>3.87×</code>
-</td>
-<td width="33%" valign="top">
-<a href="https://github.com/CyberRik/senpai"><b>🧭 senpai</b></a><br/>
-<sub>Enterprise AI execution platform</sub><br/><br/>
-<code>~70 tok/s</code> vs ~10 before<br/>
-numbers grounded by whitelist
-</td>
-</tr>
-<tr>
-<td width="33%" valign="top">
-<a href="https://github.com/CyberRik/tool-calling-bfcl"><b>🔧 tool-calling-bfcl</b></a><br/>
-<sub>Function-calling model training</sub><br/><br/>
-<code>86.6%</code> across 8 BFCL v4 categories<br/>
-<code>97.0%</code> on <code>simple_python</code>
-</td>
-<td width="33%" valign="top">
-<a href="https://github.com/CyberRik/indic-speaker-asr"><b>🗣️ indic-speaker-asr</b></a><br/>
-<sub>Who said what, in Indic audio</sub><br/><br/>
-WER <code>93.66 → 78.82</code><br/>
-cpWER <code>79.67 → 72.96</code>, 0/99 worse
-</td>
-<td width="33%" valign="top">
-<a href="https://github.com/CyberRik/reach-asr"><b>📞 reach-asr</b></a><br/>
-<sub>Noise-robust telephony ASR</sub><br/><br/>
-WER <code>23.76% → 21.20%</code><br/>
-clean-audio cost measured: <code>+0.87 pp</code>
-</td>
-</tr>
-</table>
-
----
-
-## Featured
-
-### [Ancora](https://github.com/CyberRik/Ancora) - a durable execution runtime for AI workflows
-
-<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/Temporal-000000?style=flat-square&logo=temporal&logoColor=white" /> <img src="https://img.shields.io/badge/Ray-028CF0?style=flat-square&logo=ray&logoColor=white" /> <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" /> <img src="https://img.shields.io/badge/OpenTelemetry-425CC7?style=flat-square&logo=opentelemetry&logoColor=white" /> <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white" /> <a href="https://www.bestpractices.dev/projects/15907"><img src="https://www.bestpractices.dev/projects/15907/badge" alt="OpenSSF Best Practices" /></a>
-
-AI pipelines lose work for boring reasons: an LLM call 500s, a GPU worker OOMs, a pod gets evicted - and a
-multi-step, multi-dollar computation vanishes with no way to resume. Ancora records every side-effecting step
-as an immutable event, so a worker can die mid-run and the workflow replays to exact state and continues.
-It isn't an agent framework; it's the runtime that belongs underneath one.
-
-**~60s → ~6s kill detection** · **284 tests green** · `mypy --strict` clean · chaos experiments that assert · **[OpenSSF Best Practices: passing](https://www.bestpractices.dev/projects/15907)**
-
-**▶ [Watch the 2:38 demo](https://youtu.be/UVKmMZnP50A)** - the running system end to end, nothing mocked. It closes by SIGKILLing a live worker mid-run and machine-checking that the run recovered correctly: [jump straight to that at 2:01](https://youtu.be/UVKmMZnP50A?t=121).
-
-<details>
-<summary><b>Engineering notes</b></summary>
-
-<br/>
-
-**Chaos experiments that assert instead of demonstrate.** A demo that kills a worker and ends with a green
-checkmark proves nothing - someone has to squint at the UI and agree. The chaos engine is a *test*: it
-SIGKILLs a live activity-worker container mid-flight, waits out real recovery, then machine-checks three
-invariants from Temporal's own history - no lost state, no re-executed activities, exactly-once effects -
-against a recovery-time SLO.
-
-**DAGs from causality, not timestamps.** Workflows are ordinary Python deciding step by step what to
-schedule, so the DAG is emergent. Inferring parallelism from timestamps is a flattering lie: a fan-out drawn
-as a chain looks perfectly reasonable to anyone who hasn't read the code. Ancora reads Temporal's causality
-instead - every `ActivityTaskScheduled` names the workflow task that commanded it.
-
-**Durability is not liveness.** Temporal guarantees state survives any crash; it cannot manufacture progress
-out of no capacity. Fault tolerance had to become redundancy - a worker pool where killing one lets
-survivors recover.
-
-**The dangerous half of exactly-once is the half-committed effect.** A unique key forbids duplicates for
-free. What a kill actually introduces is an effect that *began* and whose worker died before committing,
-leaving a stale pending a retry could re-fire.
-
-**Tracing across a process boundary.** A compute function is pickled and shipped to Ray, and OTel's ambient
-context doesn't travel with it - the span orphans into its own root trace. Fixed by injecting the W3C
-`traceparent` as plain data and re-extracting it worker-side.
-
-📄 [RFC-0001](https://github.com/CyberRik/Ancora/blob/main/docs/RFC-0001-durable-ai-runtime.md) · [Implementation plan](https://github.com/CyberRik/Ancora/blob/main/docs/IMPLEMENTATION-PLAN.md)
-
-</details>
-
----
-
-### [TinyServe](https://github.com/CyberRik/tinyserve) - a from-scratch LLM inference runtime on llama.cpp
-
-<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/llama.cpp-000000?style=flat-square" /> <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" /> <img src="https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white" /> <img src="https://img.shields.io/badge/OpenTelemetry-425CC7?style=flat-square&logo=opentelemetry&logoColor=white" />
-
-Continuous batching, block-based KV-cache accounting, admission control and pluggable fair
-scheduling (FIFO / priority / WFQ) - built from scratch in async Python on top of llama.cpp, at a
-scale small enough that every latency number traces back to a specific scheduling decision in the
-code, not a black box. Not an attempt to beat vLLM/SGLang on throughput - an attempt to build the
-same scheduling *ideas* somewhere fully explainable.
-
-**Continuous batching validated with a real POC first** · **97.2% of wall time in `llama_decode()`** (measured, not assumed) · **WFQ bounds unfairness 2.54× vs strict Priority's 3.87×**
-
-**▶ [Watch the 0:45 demo](https://youtu.be/ruPoUDw6xg4)** - the real server, nothing mocked: 16 concurrent streams sharing 2 decode slots, then the same requests under FIFO, Priority and WFQ, hot-swapped on the live server: [jump to the scheduler comparison at 0:25](https://youtu.be/ruPoUDw6xg4?t=25). Run from a browser at 6 requests, so its ratios are smaller than the benchmark's; the ordering is the same.
-
-<details>
-<summary><b>Engineering notes</b></summary>
-
-<br/>
-
-**Validate the risky bet before building around it.** Real multi-sequence batched decode - one
-`llama_decode()` call advancing several independent requests together - was the whole point of the
-project and the part most likely to not work. It was proven with a standalone script (two prompts,
-one decode call, two independent continuations) before any scheduler, queue or admission layer was
-built on top of the assumption.
-
-**What a scheduling policy actually controls, once batching is continuous.** Every active sequence
-advances one decode step per tick regardless of policy - that part isn't negotiable. The one honest
-lever left is *which waiting request claims a free concurrency slot next*. FIFO, strict Priority and
-WFQ are three different, benchmarked answers to exactly that question - measured head-to-head:
-FIFO ignores priority entirely (0.45× ratio), strict Priority strongly favors the high-priority class
-(3.87×) at real cost to the other, and WFQ bounds that unfairness (2.54×) instead of eliminating the
-favoritism.
-
-**A benchmark that argued against its own hypothesis - reported anyway.** Chunked prefill was
-expected to visibly protect short requests' tail latency from a long prompt's prefill. It didn't,
-measurably, at the scale tested - because the batch builder already sorts sequences by ascending
-pending-token count each tick, so short requests are packed in *before* a long prefill regardless of
-chunk size. The mechanism was traced and written up as a negative result, not tuned until a
-difference appeared.
-
-**Self-audit found a real gap in the admission controller before it shipped.** A pre-release
-engineering audit against the original design doc found the admission controller was only checking
-KV-cache budget - missing the queue-depth backpressure check the design called for, meaning a burst
-of many small-footprint requests could grow the wait queue unboundedly. Fixed and verified live: with
-a deliberately small queue cap, exactly the expected split of requests was accepted vs. rejected with
-a distinct `queue_full` reason, not just "it compiles."
-
-**Cross-checking a profiler against your own metric, not eyeballing either alone.** A real `py-spy`
-sampling session found 97.2% of wall time inside `llama_decode()`; that fraction was then checked
-quantitatively against the server's own `decode_step_duration_seconds` histogram from the same
-window - independent agreement, not a single unverified reading.
-
-</details>
-
----
-
-### [senpai](https://github.com/CyberRik/senpai) - enterprise AI execution platform
-
-<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/GraphRAG-1C3C3C?style=flat-square&logo=graphql&logoColor=white" /> <img src="https://img.shields.io/badge/Capability%20Graphs-5A5A5A?style=flat-square" /> <img src="https://img.shields.io/badge/Otsuka%20Corporation-0072CE?style=flat-square" />
-
-Decomposes a request into a capability graph, resolves it as a dependency-aware DAG, and executes nodes
-against retrieval and tool backends. Sales coaching is a judgement task where a confidently invented win
-rate is worse than no answer - so grounding is mechanical, not prompted.
-
-**About 70 tok/s** on a single Qwen3.6-35B MoE (about 3B active per token), against roughly 10 on the 27B it replaced
-
-<details>
-<summary><b>Engineering notes</b></summary>
-
-<br/>
-
-**Profile before optimising.** The platform was correct but slow, and the obvious suspects were wrong.
-Instrumenting a turn showed generation was **98% of wall time**; tool execution 0.8%, retrieval ~1%. The real
-cost was structural - the tool-selection round ran with `tool_choice="auto"`, so when the model decided no
-further tools were needed it generated the entire answer just to signal that, and synthesis then threw it
-away and regenerated. **Long turns paid for their answer twice.**
-
-**Two failed fixes before the right one.** Capping `max_tokens` truncated long tool calls. Streaming and
-aborting on answer prose broke tools that emit a preamble. Both reverted. What worked was removing the
-ambiguity rather than policing it: `tool_choice="required"` plus a `finish` sentinel tool, so selection can
-no longer generate a throwaway answer *because it can no longer generate prose at all*.
-
-**Grounding as a whitelist, not an instruction.** Statistics are computed deterministically over a graph of
-reps, deals, customers and products; the LLM only translates them to prose. Every number in the generated
-text is extracted by regex and checked against a whitelist of the report's real figures - unlisted number,
-text discarded. A model told not to invent statistics still will. One that structurally cannot publish an
-unlisted number won't.
-
-**Model routing decided with data.** A bf16 8B gave only 1.11× - bandwidth-bound. Q4 was the actual lever:
-2.72× wall, 3.8× decode, at measured grounding parity (0.969 vs 0.969), cutting the slowest workflow from
-334s to 152s. Style was the cost, not accuracy. That 27B/8B split was later retired: one MoE now does both tool
-selection and synthesis, at about 70 tok/s with thinking off.
-
-</details>
-
----
-
-### [tool-calling-bfcl](https://github.com/CyberRik/tool-calling-bfcl) - function-calling model training
-
-<img src="https://img.shields.io/badge/Qwen3--8B-6236FF?style=flat-square" /> <img src="https://img.shields.io/badge/QLoRA-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" /> <img src="https://img.shields.io/badge/NVIDIA%20DGX%20Spark-76B900?style=flat-square&logo=nvidia&logoColor=white" /> <img src="https://img.shields.io/badge/BFCL-5A5A5A?style=flat-square" />
-
-Synthetic-data pipelines, QLoRA fine-tuning of Qwen3-8B on an NVIDIA DGX Spark, and an automated eval
-harness scored against the Berkeley Function-Calling Leaderboard.
-
-**86.6%** across 8 BFCL v4 single-turn categories · **97.0%** on `simple_python` · **50K+** synthetic training examples
-
-<details>
-<summary><b>Engineering notes</b></summary>
-
-<br/>
-
-**The loss was being computed on the wrong tokens.** The original pipeline trained with full-sequence causal
-loss, so gradients flowed through system prompts, user turns, inlined schemas and tool results - on
-tool-heavy examples the model was optimising *conversation mimicry*. Underneath sat a quieter bug: the pad
-token was set to EOS, and the collator masks labels wherever input matches the pad id, so turn terminators
-were dropped from the loss **exactly where truncated JSON and EOS bailout were the observed failures**. The
-uncomfortable consequence - every checkpoint from before the fix was optimising a different objective, so
-those comparisons were thrown out rather than reinterpreted.
-
-**Negative data did as much work as positive data.** Chat conversations with irrelevant tool schemas
-injected, where the correct behaviour is to ignore the tools entirely. A model trained only on examples
-where a tool *should* be called learns that a tool should *always* be called.
-
-**Diversity sampling over random sampling.** Random blending oversamples the domains the source datasets
-already agree on. Candidates are scored against a coverage report and prioritised for novel tool domains,
-above-average conversation depth, and error-recovery patterns.
-
-**A failure taxonomy, because "wrong" isn't a diagnosis.** Malformed and partial JSON are separated -
-partial JSON is a generation-length problem, detected by where the parse error falls. Calling the wrong real
-tool is distinct from hallucinating one. Inventing, omitting and mistyping arguments are three different
-schema failures. There are behavioural categories too, for calling a tool where the model should have asked
-a clarifying question - failures any output-shape metric scores as fine.
-
-*Note: training token accuracy lands near 96–97%, the same range as the best `simple_python` score - they
-measure entirely different things. Kept separate deliberately.*
-
-</details>
-
----
-
-### [indic-speaker-asr](https://github.com/CyberRik/indic-speaker-asr) - who said what, in multi-speaker Indic audio
-
-<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/pyannote-5A5A5A?style=flat-square" /> <img src="https://img.shields.io/badge/NVIDIA%20NeMo-76B900?style=flat-square&logo=nvidia&logoColor=white" /> <img src="https://img.shields.io/badge/ONNX%20Runtime-005CED?style=flat-square&logo=onnx&logoColor=white" /> <img src="https://img.shields.io/badge/Whisper-412991?style=flat-square&logo=openai&logoColor=white" />
-
-Long conversational recordings - 12 hours, 9 Indic scripts, 2 to 8 speakers - diarized, transcribed, and every
-word put under the right speaker. Each recording is transcribed **once** and its words assigned to the diarizer's
-turns, so every diarizer is compared on identical words and a cpWER difference is purely a labelling difference.
-Scored strictly: collar 0, overlapped speech included.
-
-**WER 93.66 → 78.82** from one decoding fix · **cpWER 79.67 → 72.96, 0 of 99 recordings worse** · **DER 27.34** at collar 0 · an LLM relabeller built, measured and rejected
-
-<details>
-<summary><b>Engineering notes</b></summary>
-
-<br/>
-
-**The model was fine; the decode was wrong.** IndicConformer's output spelled phonetically correct words across
-six scripts at once. The CTC head is *multi-softmax* - each language's 256-token block was trained under its own
-softmax, so a Kannada logit and a Marathi logit were never meant to be compared, and a global argmax compares
-them on every frame. Voting for the recording's language over its frames, then decoding inside that block, took
-WER from 93.66 to 78.82. The naive decode stays in the results table as a scored ablation rather than a claim.
-
-**A benchmark nobody can rerun isn't one.** faster-whisper's default temperature fallback re-decodes hard
-segments by *sampling*, unseeded: one recording gave 87, 84 and 100 words on three identical runs. At
-temperature 0 it gives 211 words every time - reproducible *and* better, and the corpus run fell from 396 to 153
-minutes.
-
-**The fix that held was the unglamorous one.** On 13 recordings the model's own language vote picked Urdu or
-Nepali, so the whole transcript came out in the wrong script and scored 100% WER regardless of what was heard -
-spoken Hindi and Urdu differ mainly in script. Falling back to Whisper when the detected language is outside the
-target set cut cpWER to 72.96 with no recording worse. Not fitted to scores: routing Hindi- or Marathi-detected
-recordings to Whisper instead made WER *worse* (82.56).
-
-**Measure the ceiling before blaming the model.** LLM speaker relabelling (Qwen2.5-7B, in the spirit of
-DiarizationLM) was guarded - confidence threshold, rogue-edit discard, an assertion that text never changes - and
-still moved WDER the wrong way, 20.12 → 20.96. An oracle audit explained it: even after splitting at pauses,
-**37.87% of words** sit in units spanning two true speakers, where no relabel can help. Its confidences were
-always 0.8 or 0.9 - a number, not a signal.
-
-**Look where the error is, not where it's expected.** Only 24% of pyannote's error seconds fall in overlapped
-speech; most of it is ordinary single-speaker confusion - so source separation, the obvious next build, was not
-the first one.
-
-</details>
-
----
-
-### [reach-asr](https://github.com/CyberRik/reach-asr) - noise-robust speech recognition for telephony audio
-
-<img src="https://img.shields.io/badge/Whisper-412991?style=flat-square&logo=openai&logoColor=white" /> <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" /> <img src="https://img.shields.io/badge/LoRA%20%2F%20PEFT-FFD21E?style=flat-square&logo=huggingface&logoColor=black" /> <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" />
-
-**There is no public corpus of real emergency-call audio** - 911 recordings are legally restricted almost
-everywhere, for good privacy reasons. So this doesn't claim to have trained on them. It *constructs* the
-acoustic condition and states exactly what was constructed: a 300–3400 Hz telephone passband, G.711 μ-law
-companding, ESC-50 sirens and traffic at −5 to 10 dB SNR, and 5% packet loss over LibriSpeech speech.
-Then it LoRA fine-tunes Whisper on that channel and serves the result over HTTP to
-[reach-app](https://github.com/CyberRik/reach-app).
-
-**23.76% → 21.20% WER, −2.56 pp (95% CI −3.85 to −1.31)** · **+0.87 pp cost on clean audio, measured not assumed** · **4.37% clean ceiling** · **30 signal-property and contract tests**
-
-<details>
-<summary><b>Engineering notes</b></summary>
-
-<br/>
-
-**The first run failed, and the loss curve said it was working.** Loss fell steadily from 1.82 to 0.71 while
-WER more than *doubled* - 5.52% to 11.89%, worse in every SNR bucket. The cause was in the targets:
-LibriSpeech references are ALL CAPS, Whisper emits cased text, and BPE splits uppercase into far more tokens.
-The model spent its capacity learning a formatting change the eval normalizer then strips. It was learning to
-shout, not to hear - and the loss curve was a correct measurement against the wrong objective.
-
-**Measure the headroom before spending the GPU.** `whisper-small` scored 3.06% clean and 5.52% degraded on
-that channel - 2.5 points of headroom total, and no fine-tune recovers a gap that isn't there. A seven-minute
-probe on 200 utterances now runs first: under ~10 points, harden the channel instead of training.
-
-**Four numbers, and the fourth is the one people skip.** Clean zero-shot is the ceiling, degraded zero-shot
-the baseline, degraded fine-tuned the result - and clean fine-tuned is what the result cost. Without it,
-"it learned to handle phone audio" and "it learned to *only* handle phone audio" are indistinguishable. The
-gain is −2.56 pp, CI [1.31, 3.85] over a paired bootstrap; the cost is +0.87 pp on clean, CI [+0.35, +1.40].
-Read honestly, that recovers 2.56 of the 19.39 points the channel cost - about 13% of the gap. Real, and
-modest.
-
-**One curve, not two effects.** The gain is monotone in SNR even in relative terms - 14.8% / 8.7% / 3.1%
-across the bands, then −19.9% on clean. The regression is that curve's endpoint, not a separate finding: the
-adapter reallocates capacity along the SNR axis, and it gains most in the low-SNR bucket that actually
-matters here.
-
-**The augmentation is the experiment, so it is tested like one.** A single `lowpass_biquad` is 2nd-order and
-left ~10% of a 6 kHz tone standing inside a filter claiming to be a telephone passband - understating the
-damage would have overstated the gap it produces. Three cascaded sections now. A remaining flaw is documented
-rather than hidden: SNR is scaled to a mean over the whole clip, before the channel, so an impulsive noise
-clip is nearly absent during the speech and its label is not the condition scored.
-
-</details>
-
----
-
-### [reach-app](https://github.com/CyberRik/reach-app) - R.E.A.C.H., emergency response platform
-
-<img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white" /> <img src="https://img.shields.io/badge/Socket.IO-010101?style=flat-square&logo=socketdotio&logoColor=white" /> <img src="https://img.shields.io/badge/OSRM-7EBC6F?style=flat-square&logo=openstreetmap&logoColor=white" /> <img src="https://img.shields.io/badge/Co--founder%20%26%20AI%20Lead-5A5A5A?style=flat-square" />
-
-**Dispatch is the hard part, not the model.** A report arrives from a phone that may be wrong about where it
-is, and a responder has to be routed to it while both are still moving. R.E.A.C.H. runs that loop: SOS intake,
-live responder tracking over WebSockets, and OSRM routing with the encoded polylines decoded and positions
-interpolated between updates - a stale marker on a dispatch map is a *failed* feature, not a degraded one.
-
-Fake reports are screened on EXIF GPS, Haversine against the claimed location within a 3 km tolerance. The
-check deliberately **fails open** on stripped metadata: most phones strip EXIF by default, and refusing a
-genuine emergency is far worse than admitting a bad report a human will read anyway.
-
-Voice reports capture in the browser through `MediaRecorder` and post to
-[reach-asr](https://github.com/CyberRik/reach-asr); if inference is down the recording still saves and plays
-back rather than being thrown away. The speech model itself lives in that repo - along with an honest
-account of what it was and was not trained on.
-
-Selected from **200+ startups** by IITM NIRMAAN · led a 5-member cross-functional team to MVP
-
----
-
-### [medproqa](https://github.com/CyberRik/medproqa) - fine-tuned Phi-3 for medical QA
-
-<img src="https://img.shields.io/badge/Phi--3-0078D4?style=flat-square&logo=microsoft&logoColor=white" /> <img src="https://img.shields.io/badge/QLoRA-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" /> <img src="https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white" />
-
-250K+ QA pairs curated from MedQA, MedMCQA and PubMedQA with schema normalisation and dedup - deduplicating
-*before* benchmarking, since leakage between the mix and the eval set would have inflated the headline number
-into meaninglessness.
-
-**82.6% on MedMCQA** · hallucination **−28%** out-of-distribution · **38%** less GPU memory, **24%** lower training cost
-
----
-
-### [portfolio](https://github.com/CyberRik/portfolio) - an explorable 3D workspace
-
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" /> <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white" /> <img src="https://img.shields.io/badge/React%20Three%20Fiber-000000?style=flat-square&logo=react&logoColor=61DAFB" /> <img src="https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=threedotjs&logoColor=white" />
-
-A navigable 3D room where each object opens a section - the monitor runs an OS-style shell with Projects and
-Timeline apps, architecture diagrams, and full case studies.
-
-Its content layer enforces an **authenticity rule**: unwritten fields hold a marker that renders as a visible
-gap, so the site can never quietly fill itself with plausible copy.
-
-<p><a href="https://ritankar-mondal.vercel.app/"><img src="https://img.shields.io/badge/Explore%20the%20room-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live site" /></a></p>
-
----
-
-### [smart-fan](https://github.com/CyberRik/smart-fan) - SmartFan, brand intelligence & share-of-voice
-
-<img src="https://img.shields.io/badge/Gemini%202.5%20Flash-8E75B2?style=flat-square&logo=googlegemini&logoColor=white" /> <img src="https://img.shields.io/badge/n8n-EA4B71?style=flat-square&logo=n8n&logoColor=white" />
-
-Automated sentiment and share-of-voice tracking across Twitter, YouTube and Google APIs. **87% F1** on a
-hand-labelled evaluation set - hand-labelled being the part that makes it a claim rather than one model
-grading another. Its ingestion design directly informed the GEO retrieval work later built at Gravton Labs.
-
----
-
-### [path-planning](https://github.com/CyberRik/path-planning) - four RRT variants, benchmarked
-
-<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" />
-
-**98% success across 1000+ runs** · path length **−27%** via smoothing · runtime **−41%** vs baseline RRT.
-The run count exists to beat variance - on randomised planners a handful of runs will rank the variants in
-any order you like.
-
----
-
-### [rerouter-agent](https://github.com/CyberRik/rerouter-agent)
-
-<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
-
-Agentic request routing - dispatching to the appropriate model or tool rather than forcing one path.
-
----
+<!-- upstream:start -->
+**[Docling](https://github.com/docling-project)** <sub>LF AI & Data</sub>
+
+- [docling#4602](https://github.com/docling-project/docling/pull/4602) `epub` Resolve single-quoted and percent-escaped image sources
+- [docling#4601](https://github.com/docling-project/docling/pull/4601) `html` Keep converting when a link or image points outside the base directory
+- [docling-serve#721](https://github.com/docling-project/docling-serve/pull/721) Point default_code_formula_preset at a real Docling preset
+- [docling#4636](https://github.com/docling-project/docling/pull/4636) `epub` Drop query and fragment from image src
+- [docling-core#854](https://github.com/docling-project/docling-core/pull/854) `chunker` Keep a table caption in the same window as its table <sub><i>in review</i></sub>
+- [docling-core#932](https://github.com/docling-project/docling-core/pull/932) `chunker` Only split Markdown tables by columns <sub><i>in review</i></sub>
+
+**[Feast](https://github.com/feast-dev)** <sub>LF AI & Data</sub>
+
+- [feast#6985](https://github.com/feast-dev/feast/pull/6985) Warm up the whole DynamoDB connection pool
+
+**[Meshery](https://github.com/meshery)** <sub>CNCF</sub>
+
+- [meshery#22574](https://github.com/meshery/meshery/pull/22574) `Docs` Fix Helm Snapshot install URL and plugin usage
+- [meshery#23765](https://github.com/meshery/meshery/pull/23765) `Docker Extension` Don't hang token store and logout when no websocket client is connected
+- [meshery#23764](https://github.com/meshery/meshery/pull/23764) `Docker Extension` Remove dead service mesh adapter code and unused icons <sub><i>in review</i></sub>
+- [meshery#23766](https://github.com/meshery/meshery/pull/23766) `Helm` Fix wrong service name and port in meshery chart NOTES, test hook, and quote env values <sub><i>in review</i></sub>
+- [meshery#23780](https://github.com/meshery/meshery/pull/23780) `Docker Extension` Serialize websocket writes and close the last token log leak in the proxy <sub><i>in review</i></sub>
+<!-- upstream:end -->
 
 ## Experience
 
-**Otsuka Corporation** · AI/ML Engineer Intern · Tokyo, Japan · *May – Jul 2026*
-<br/><sub>Only student selected from IIT Madras for the programme.</sub>
-Trained the model and architected the platform it runs inside - 50K+ synthetic examples, QLoRA fine-tuning of
-Qwen3-8B to **86.6% across 8 BFCL categories** (97.0% on `simple_python`), and Senpai's serving consolidated onto
-a single MoE at about **70 tok/s** against roughly 10.
+- **Otsuka Corporation**, Tokyo · AI/ML engineer intern · *2026*<br/>Trained the tool-calling model and designed the platform it runs inside. The only student selected from IIT Madras.
+- **Gravton Labs**, remote · AI engineer intern · *2026*<br/>Owned the crawl and citation-attribution layer of a GEO visibility platform, and migrated its backend to FastAPI.
+- **OctonData**, remote · software engineer intern · *2025*<br/>Built a document-intelligence platform on GCP, shipped to 10+ U.S. CPA firms, which cut manual review by 40%+.
+- **Tecnod8.ai**, remote · ML intern · *2025*<br/>Multilingual document parsing, including RTL and Devanagari scripts.
 
-**Gravton Labs** · AI Engineer Intern · Ontario, Canada (Remote) · *Feb – May 2026*
-Owned the crawl and attribution layer under a GEO visibility platform - typed crawl budgets that decide page
-quality before spend, and scoped citation attribution that can honestly return nothing. Migrated the backend
-from Encore TypeScript to **FastAPI** on Railway + Supabase, mid-flight.
+## Recognition
 
-**OctonData** · Software Engineer Intern · San Francisco (Remote) · *Oct – Dec 2025*
-Primary engineer on a document-intelligence platform on **GCP** - Table Transformer layout detection,
-page-by-page tax parsing with a Gemini Vision fallback, and bounded-concurrent long-document extraction.
-Shipped to **10+ U.S. CPA firms**, manual review time cut **40%+**.
+- Top 15 nationally, NCIIPC Startup India AI Grand Challenge (multilingual document understanding)
+- R.E.A.C.H., an emergency-response platform I co-founded, was selected from 200+ startups by IITM NIRMAAN
 
-**Tecnod8.ai** · ML Intern · Remote · *Sep – Oct 2025*
-Multilingual document parsing across **5+ languages** including RTL and Devanagari (YOLOv10, PaddleOCR,
-Qwen2.5-VL).
-
----
-
-## Also here
-
-**Applied ML** - [smartpdf](https://github.com/CyberRik/smartpdf) ·
-[house-prices-prediction](https://github.com/CyberRik/house-prices-prediction) ([demo ↗](https://rikk-house-prices-prediction.streamlit.app/)) ·
-[stock-price-prediction](https://github.com/CyberRik/stock-price-prediction) ·
-[pokemon](https://github.com/CyberRik/pokemon) ·
-[langchain-tutorials](https://github.com/CyberRik/langchain-tutorials)
-
-**Frontend** - [nike-landing](https://github.com/CyberRik/nike-landing) ·
-[youtube-clone](https://github.com/CyberRik/youtube-clone) ·
-[modal-window](https://github.com/CyberRik/modal-window) ·
-[pig-game](https://github.com/CyberRik/pig-game) ·
-[Guess-the-number](https://github.com/CyberRik/Guess-the-number)
-
----
-
-## Tech stack
-
-<table>
-<tr><td width="20%"><b>Languages</b></td><td><img src="https://skillicons.dev/icons?i=python,cpp,ts,js,bash&theme=dark" alt="Python, C++, TypeScript, JavaScript, Bash" /></td></tr>
-<tr><td><b>LLM&nbsp;&amp;&nbsp;ML</b></td><td><img src="https://skillicons.dev/icons?i=pytorch,sklearn,opencv&theme=dark" alt="PyTorch, scikit-learn, OpenCV" /><br/><sub>Transformers · QLoRA / LoRA / PEFT · instruction tuning · tool &amp; function calling · YOLOv10 · PaddleOCR</sub></td></tr>
-<tr><td><b>Retrieval</b></td><td><sub>LangChain · FAISS · ChromaDB · GraphRAG · hybrid retrieval &amp; reranking · multimodal document AI</sub></td></tr>
-<tr><td><b>Backend</b></td><td><img src="https://skillicons.dev/icons?i=fastapi,postgres,redis,supabase&theme=dark" alt="FastAPI, PostgreSQL, Redis, Supabase" /><br/><sub>AsyncIO</sub></td></tr>
-<tr><td><b>Pipelines</b></td><td>
-<img src="https://img.shields.io/badge/Temporal-000000?style=for-the-badge&logo=temporal&logoColor=white" alt="Temporal" />
-<img src="https://img.shields.io/badge/Ray-028CF0?style=for-the-badge&logo=ray&logoColor=white" alt="Ray" />
-<img src="https://img.shields.io/badge/Airflow-017CEE?style=for-the-badge&logo=apacheairflow&logoColor=white" alt="Airflow" />
-<img src="https://img.shields.io/badge/n8n-EA4B71?style=for-the-badge&logo=n8n&logoColor=white" alt="n8n" />
-<br/><sub>Apify · Pandas</sub></td></tr>
-<tr><td><b>Cloud&nbsp;&amp;&nbsp;Infra</b></td><td><img src="https://skillicons.dev/icons?i=docker,gcp,azure,linux,vercel,githubactions&theme=dark" alt="Docker, GCP, Azure, Linux, Vercel, GitHub Actions" /><br/><sub>Modal · Railway</sub></td></tr>
-<tr><td><b>Observability</b></td><td><img src="https://skillicons.dev/icons?i=prometheus,grafana&theme=dark" alt="Prometheus, Grafana" /><br/><sub>OpenTelemetry · Jaeger</sub></td></tr>
-<tr><td><b>Frontend</b></td><td><img src="https://skillicons.dev/icons?i=nextjs,react,threejs&theme=dark" alt="Next.js, React, Three.js" /></td></tr>
-</table>
-
----
-
-## Achievements
-
-- **Only student selected from IIT Madras** for the Otsuka Corporation internship programme, Tokyo
-- **98.61 percentile** in JEE Mains among 1.2M+ candidates · **Top 450** in WBJEE
-- **AIR 71** (Junior Squad) and City Topper - Technothlon Prelims
-- **Top 15 nationally** - NCIIPC (Govt. of India) Startup India AI Grand Challenge, Intelligent Multilingual Document Understanding
-- Selected from **200+ startups** by IITM NIRMAAN for R.E.A.C.H.
-
----
-
-## GitHub
-
-<div align="center">
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api?username=CyberRik&show_icons=true&theme=transparent&hide_border=true&hide_title=true&include_all_commits=true&count_private=true&icon_color=3FCF8E&text_color=c9d1d9" />
-  <img height="150" src="https://github-stats-extended.vercel.app/api?username=CyberRik&show_icons=true&theme=transparent&hide_border=true&hide_title=true&include_all_commits=true&count_private=true&icon_color=1a7f5a&text_color=555555" alt="GitHub statistics" />
-</picture>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-stats-extended.vercel.app/api/top-langs/?username=CyberRik&layout=compact&theme=transparent&hide_border=true&hide_title=true&langs_count=8&text_color=c9d1d9" />
-  <img height="150" src="https://github-stats-extended.vercel.app/api/top-langs/?username=CyberRik&layout=compact&theme=transparent&hide_border=true&hide_title=true&langs_count=8&text_color=555555" alt="Most used languages" />
-</picture>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com?user=CyberRik&hide_border=true&background=00000000&ring=3FCF8E&fire=3FCF8E&currStreakLabel=3FCF8E&sideLabels=c9d1d9&dates=8b949e&currStreakNum=ffffff&sideNums=ffffff&stroke=30363d" />
-  <img height="150" src="https://streak-stats.demolab.com?user=CyberRik&hide_border=true&background=00000000&ring=1a7f5a&fire=1a7f5a&currStreakLabel=1a7f5a&sideLabels=555555&dates=777777&currStreakNum=24292f&sideNums=24292f&stroke=d0d7de" alt="Contribution streak" />
-</picture>
-
-<br/><br/>
-
-<sub><b>Currently active</b></sub><br/>
-
-<a href="https://github.com/CyberRik/Ancora"><img src="https://img.shields.io/github/last-commit/CyberRik/Ancora?style=flat-square&label=Ancora&labelColor=181717&color=3FCF8E" alt="Ancora last commit" /></a>
-<a href="https://github.com/CyberRik/tinyserve"><img src="https://img.shields.io/github/last-commit/CyberRik/tinyserve?style=flat-square&label=TinyServe&labelColor=181717&color=3FCF8E" alt="TinyServe last commit" /></a>
-<a href="https://github.com/CyberRik/portfolio"><img src="https://img.shields.io/github/last-commit/CyberRik/portfolio?style=flat-square&label=portfolio&labelColor=181717&color=3FCF8E" alt="portfolio last commit" /></a>
-<a href="https://github.com/CyberRik/reach-asr"><img src="https://img.shields.io/github/last-commit/CyberRik/reach-asr?style=flat-square&label=reach-asr&labelColor=181717&color=3FCF8E" alt="reach-asr last commit" /></a>
-<a href="https://github.com/CyberRik/senpai"><img src="https://img.shields.io/github/last-commit/CyberRik/senpai?style=flat-square&label=senpai&labelColor=181717&color=555555" alt="senpai last commit" /></a>
-
-<br/><br/>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/CyberRik/CyberRik/output/snake-dark.svg" />
-  <img width="100%" src="https://raw.githubusercontent.com/CyberRik/CyberRik/output/snake.svg" alt="Contribution graph being eaten by a snake" />
-</picture>
-
-</div>
-
-<img width="100%" src="assets/footer.svg" alt="" />
+<sub>The card and the open-source list above refresh daily from the GitHub API ([`scripts/build.py`](scripts/build.py)).</sub>
