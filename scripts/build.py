@@ -188,18 +188,15 @@ def render_card(lines, theme):
     e = html.escape
     pad, fs, cw, w = 32, 14, 8.4, 850
     lh, art_lh = 22, 18
-    t0 = 1.1  # seconds: output starts appearing once the command is typed
     rows = []
 
-    def reveal(i, step=0.055):
-        return f' class="r" style="animation-delay:{t0 + i * step:.2f}s"'
+    # Everything renders on first paint; the blinking cursor is the only motion.
+    def reveal(*_):
+        return ""
 
-    # prompt + typed command, one keystroke at a time
     py = pad + 14
-    keys = "".join(f'<tspan class="k" style="animation-delay:{0.3 + i * 0.09:.2f}s">{ch}</tspan>'
-                   for i, ch in enumerate(COMMAND))
     rows.append(f'<text x="{pad}" y="{py}"><tspan fill="{c["key"]}">{e(PROMPT)}</tspan>'
-                f'<tspan fill="{c["fg"]}">{keys}</tspan></text>')
+                f'<tspan fill="{c["fg"]}">{COMMAND}</tspan></text>')
 
     # art
     top = py + 34
@@ -245,10 +242,9 @@ def render_card(lines, theme):
 
     # closing prompt with a blinking cursor
     end_y = max(y - lh, art_bottom) + 40
-    done = t0 + n * 0.055 + 0.2
-    rows.append(f'<text x="{pad}" y="{end_y}" class="r" style="animation-delay:{done:.2f}s">'
+    rows.append(f'<text x="{pad}" y="{end_y}">'
                 f'<tspan fill="{c["key"]}">{e(PROMPT)}</tspan></text>')
-    rows.append(f'<text x="{pad}" y="{end_y}" class="cursor" style="animation-delay:{done:.2f}s,{done:.2f}s">'
+    rows.append(f'<text x="{pad}" y="{end_y}" class="cursor">'
                 f'<tspan fill="none">{e(PROMPT)}</tspan><tspan fill="{c["key"]}">█</tspan></text>')
 
     h = end_y + pad - 6
@@ -256,16 +252,9 @@ def render_card(lines, theme):
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="Ritankar Mondal: AI engineer working on LLM systems, retrieval and infrastructure">
   <style>
     text {{ white-space: pre; }}
-    .r {{ opacity: 0; animation: in .35s ease-out forwards; }}
-    .k {{ fill-opacity: 0; animation: key 0s forwards; }}
-    .cursor {{ opacity: 0; animation: in 0s forwards, blink 1.1s step-end infinite; }}
-    @keyframes in {{ to {{ opacity: 1; }} }}
-    @keyframes key {{ to {{ fill-opacity: 1; }} }}
+    .cursor {{ animation: blink 1.1s step-end infinite; }}
     @keyframes blink {{ 50% {{ opacity: 0; }} }}
-    @media (prefers-reduced-motion: reduce) {{
-      .r, .cursor {{ animation: none; opacity: 1; }}
-      .k {{ animation: none; fill-opacity: 1; }}
-    }}
+    @media (prefers-reduced-motion: reduce) {{ .cursor {{ animation: none; }} }}
   </style>
   <rect x="0.5" y="0.5" width="{w - 1}" height="{h - 1}" rx="12" fill="{c["bg"]}" stroke="{c["border"]}"/>
   <g font-family="{FONT}" font-size="{fs}">
