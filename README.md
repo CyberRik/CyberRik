@@ -5,7 +5,14 @@
   </picture>
 </a>
 
-<p align="right"><sub><a href="https://ritankar-mondal.vercel.app/">Portfolio</a> &nbsp;·&nbsp; <a href="mailto:ritankarmondal123@gmail.com">Email</a> &nbsp;·&nbsp; <a href="notes.md">Engineering notes</a></sub></p>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=python,cpp,ts,pytorch,fastapi,postgres,redis,docker,gcp,linux,prometheus,nextjs&theme=dark&perline=12" />
+    <img height="40" src="https://skillicons.dev/icons?i=python,cpp,ts,pytorch,fastapi,postgres,redis,docker,gcp,linux,prometheus,nextjs&theme=light&perline=12" alt="Python, C++, TypeScript, PyTorch, FastAPI, PostgreSQL, Redis, Docker, GCP, Linux, Prometheus, Next.js" />
+  </picture>
+</p>
+
+<p align="center"><sub><a href="https://ritankar-mondal.vercel.app/">Portfolio</a> &nbsp;·&nbsp; <a href="mailto:ritankarmondal123@gmail.com">Email</a> &nbsp;·&nbsp; <a href="notes.md">Engineering notes</a></sub></p>
 
 I build LLM applications, retrieval systems and the backend infrastructure they run on: tool-calling
 models, document intelligence, RAG pipelines, and execution runtimes. I work across the whole loop, from
@@ -27,6 +34,12 @@ worth the things it holds fixed.
 How each one was built, including what failed first: **[notes.md](notes.md)**.
 
 ## Open source
+
+<p>
+  <a href="https://www.bestpractices.dev/projects/15907"><img height="72" src="assets/openssf-best-practices.png" alt="OpenSSF Best Practices: passing (Ancora)" title="OpenSSF Best Practices: passing (Ancora)" /></a>
+  &nbsp;
+  <a href="https://cloud.layer5.io/user/e5bf077c-7dc5-4d14-8f42-d99e4f83417d?tab=badges&badge=first-design"><img height="90" src="https://badges.layer5.io/assets/badges/first-design/first-design.png" alt="Layer5 First Design badge" title="Layer5: First Design" /></a>
+</p>
 
 <!-- upstream:start -->
 **[Docling](https://github.com/docling-project)** <sub>LF AI & Data</sub>
