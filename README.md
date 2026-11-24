@@ -1,7 +1,7 @@
 <a href="https://ritankar-mondal.vercel.app/">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/card-dark.svg" />
-    <img width="100%" src="assets/card-light.svg" alt="Ritankar Mondal. AI engineer working on LLM systems, retrieval and the runtimes under them. B.Tech at IIT Madras, previously at Otsuka Corporation in Tokyo." />
+    <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg" />
+    <img width="100%" src="assets/header-light.svg" alt="Ritankar Mondal, AI engineer: LLM systems, retrieval, and the runtimes under them. The skyline is built from GitHub contributions over the past six months." />
   </picture>
 </a>
 
@@ -87,4 +87,4 @@ How each one was built, including what failed first: **[notes.md](notes.md)**.
 - Top 15 nationally, NCIIPC Startup India AI Grand Challenge (multilingual document understanding)
 - R.E.A.C.H., an emergency-response platform I co-founded, was selected from 200+ startups by IITM NIRMAAN
 
-<sub>The card and the open-source list above refresh daily from the GitHub API ([`scripts/build.py`](scripts/build.py)).</sub>
+<sub>The skyline and the open-source list above refresh daily from the GitHub API ([`scripts/build.py`](scripts/build.py)).</sub>
