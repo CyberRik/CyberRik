@@ -73,6 +73,10 @@ How each one was built, including what failed first: **[notes.md](notes.md)**.
 - [meshery#23764](https://github.com/meshery/meshery/pull/23764) `Docker Extension` Remove dead service mesh adapter code and unused icons <sub><i>in review</i></sub>
 - [meshery#23766](https://github.com/meshery/meshery/pull/23766) `Helm` Fix wrong service name and port in meshery chart NOTES, test hook, and quote env values <sub><i>in review</i></sub>
 - [meshery#23780](https://github.com/meshery/meshery/pull/23780) `Docker Extension` Serialize websocket writes and close the last token log leak in the proxy <sub><i>in review</i></sub>
+
+**[is-a-dev](https://github.com/is-a-dev)**
+
+- [register#63239](https://github.com/is-a-dev/register/pull/63239) Register ritankarm.is-a.dev <sub><i>in review</i></sub>
 <!-- upstream:end -->
 
 ## Experience
